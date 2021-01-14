@@ -9,12 +9,18 @@
     <link rel="stylesheet" href="style.css">
     <title>Accueil</title>
 </head>
+
 <body>
 <!-- Header -->
-    <div class="container bg-info">
-        <div class="row">
+    <header class="container-fluid bg-info">
+            <figure class="figure">
+                <img class="img-fluid img-thumbnail " src="bg-teddyBear.jpg" alt="nounours">
+            </figure>
+        <div class="row">    
             <nav class="col navbar navbar-expand navbar-dark">
-                <a class="navbar-brand" href="index.html">Orinoco</a>
+                <h1>
+                    <img class="navbar-brand img-fluid" src="logoOrinoco.png" width="150"></img>
+                </h1>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -33,71 +39,25 @@
                 </div> 
             </nav>  
         </div>
-    </div>
+    </header>
 
     
  <!-- Main -->
 
-    <div class="container-fluid bgColor">
-        <div class="row">
-            <div class="col">
-              <div class="jumbotron">
-                <h1>Bienvenue sur Orinoco!</h1>
-              </div>
-            </div>
-          </div>
-        <div class="row">
-            <div class="col-12 col-lg-4">
-                <div class="card border-warning">
-                    <div class="card-body">
-                        <h2 class="card-title">nounours1</h2>
-                        <img src="http://localhost:3000/images/teddy_1.jpg" class="img-fluid "/>
-                        <p class="card-text">description de l ours en peluche</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-4">
-                <div class="card border-warning rounded-pill">
-                    <div class="card-body">
-                        <h2 class="card-title">nounours2</h2>
-                        <p class="card-text">description de l ours en peluche</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-4">
-                <div class="card border-warning rounded-pill">
-                    <div class="card-body">
-                        <h2 class="card-title">nounours3</h2>
-                        <p class="card-text">description de l ours en peluche</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-4">
-                <div class="card border-warning rounded-pill">
-                    <div class="card-body">
-                        <h2 class="card-title">nounours4</h2>
-                        <p class="card-text">description de l ours en peluche</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-4">
-                <div class="card border-warning rounded-pill">
-                    <div class="card-body">
-                        <h2 class="card-title">nounours5</h2>
-                        <p class="card-text">description de l ours en peluche</p>
-                    </div>
-                </div>
-            </div>
+    <main id="main" class="container-fluid bgColor d-flex ">
+        <div id="listProduct" class="row">
+
         </div>
-    </div>
+    </main>
  <!---Footer -->
-    <div class="row">
-        <div class="col">
+    <footer class="row ">
+        <div class="col bg-secondary">
         </div>
-    </div>
+    </footer>
 
-
-
+    <script src="config.js"></script>
+    <script src="showProductIndex.js"></script>
+    <script src="createObjetc.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous"></script>
