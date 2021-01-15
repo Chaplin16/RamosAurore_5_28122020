@@ -76,21 +76,22 @@ fetch(config.host + config.api)
              `<div class="col-12 col-lg-4">
                 <div class="card border-warning border-5 m-5">
                     <div id="cardProduct" class="card-body ">
-                        <h2 class="card-title">${product.name}</h2>
-                        <a href="productDetail.html?id=${product._id} ">
+                        <h2 class="card-title">${product.name}</h2>    
+                        <a href="productDetail.html?id=${product._id}">
                             <figure id="figure">
                                 <p id="erreur"></p>
                                 <img src=${product.imageUrl} class="img-fluid rounded align-items-center" alt="ours en peluche">
                             </figure>
                             <figcaption>
+                        </a>    
                             <p class="text-right font-weight-bold">Prix:${product.price / 100}€</p>
                             <img src="star-solid.jpg"/>
                             <img src="star-solid.jpg"/>
                             <img src="star-solid.jpg"/>
                             <img src="star-solid.jpg"/>
                             <img src="star-solid.jpg"/>
-                        </a>
-                        <button
+                        
+                        <button onclick="window.location.href ="#" type="button" value="Commander" class="text-right float-right">Commander</button>
                     </div>
                 </div>
             </div>`
