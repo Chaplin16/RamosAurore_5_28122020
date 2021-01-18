@@ -1,9 +1,24 @@
-//je recupere la fin de l url en  variable
-let params = (new URL(document.location)).searchParams;
-let name = params.get('_id');
-let url = windows.location.pathname;
 
-//je verifie mes donnees 
-if (url == "/" || url == "index.html") {
-    
+var myFetch = fetch(config.host + config.api)
+let containerProductDetail = document.getElementById('containerProductDetail');
+const urlParams = new URL(document.location).searchParams;
+const id = urlParams.get("id");
+
+console.log(id);
+
+let itemId = {
+    method:"GET/:_id"
 }
+
+
+fetch("http://localhost:3000/api/teddies",itemId)
+    .then(function (response) {
+    return response.json()
+    })
+    .then(function(showItem){
+    let teddy = new TeddyBears(product);
+    containerProductDetail.innerHTML
+    })
+//.catch(error => alert("Erreur : " + error));
+
+   
