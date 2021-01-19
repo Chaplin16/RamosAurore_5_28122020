@@ -41,16 +41,16 @@
     </header>
 
 <!--main-->    
-    <main>
+    <main class="bgColor">
         <!--le panier-->
-        <div class="containerOrder mt-5 ml-5 mr-5">      
-            <h4 class="font-weight-bold">Aperçu de votre panier</h4>
+        <div class="containerOrder pt-3 ml-5 mr-5 bg-white">      
+            <h4 class="font-weight-bold pl-3">Aperçu de votre panier</h4>
             <form class="form-horizontal" role="form" method="get" action="#">
-                <div class="table_box_panier mt-5"><!--contient le tableau-->
+                <div class="table_box_panier mt-4 ml-5 mr-5 "><!--contient le tableau-->
                 <!--le tableau-->    
                     <table class="table border">
                         <!--entete tableau-->
-                        <thead class="table-striped">
+                        <thead class="table-striped bg-light ">
                         <tr>
                             <th>Articles</th>
                             <th>Prix unitaire</th>
@@ -60,7 +60,7 @@
                         </tr>
                         </thead>
                         <!--1ere ligne-->
-                        <tbody>  
+                        <tbody id="cart-tablebocdy">  
                             <tr>
                             <td>image + nom peluche</td>
                             <td class="text-center">0€</td>
@@ -92,24 +92,84 @@
                         </tbody>
                     </table>                    
                 </div>       
-            </form>          
+            </form> 
+            <button class="btn btn-warning border-dark font-weight-bold mt-4 mb-4 ml-5">Envoyer</button>         
         </div>
         <!--fin du panier-->
 
         <!--formulaire de contact-->
-        <!--fin du formulaire de contact"-->
-        
+    <div class="containerMessage bg-white mt-5 mr-5 ml-5">      
+        <h4 class="font-weight-bold pt-4 pl-3 pb-2">Formulaire de contact</h4>    
+        <form class="ml-5 mr-3">
+            <div class="form-group">
+                <div class="form-row">
+                    <label class="col-12 font-weight-bold" for="nom">Nom</label> 
+                    <div class="col-10">
+                        <input id="nom" type="text" class="form-control" name="" placeholder="Entrer votre nom">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <label class="col-12 font-weight-bold" for="nom">Prenom</label> 
+                    <div class="col-10">
+                        <input id="prenom" type="text" class="form-control" name="" placeholder="Entrer votre prénom">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-12 font-weight-bold" for="mail">Email</label> 
+                    <div class="col-10">
+                        <input id="mail" type="text" class="form-control" name="" placeholder="Entrer votre mail">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row ">
+                    <label class="col-12 font-weight-bold" for="adresse">Adresse</a></label> 
+                    <div class="col-10">
+                        <input id="adresse" type="text" class="form-control" name="" placeholder="Entrer votre adresse">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <label class="col-3 font-weight-bold" for="CP">Code Postal</label> 
+                    <div class="col-5">
+                        <input id="CP" type="text" class="form-control" name="" placeholder="Code Postal">
+                    </div>
+                </div>
+            </div> <div class="form-group">
+                <div class="form-row">
+                    <label class="col-3 font-weight-bold" for="ville">Ville</label> 
+                    <div class="col-5">
+                        <input id="ville" type="text" class="form-control" name="" placeholder="Ville">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="row">
+                <div class="col-md-1 ">
+                        <button class="btn btn-warning font-weight-bold border-dark mt-4 mb-4">Envoyer</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>            <!--fin du formulaire de contact"-->
+            
     </main>
 
 <!---Footer -->
-     <footer class="row ">
+     <footer class="row">
         <div class="col-12 bg-secondary">
             <ul class="navbar-nav font-weight-bold w-100 justify-content-end">
-                <li class="nav-item active ml-3">
+                <li class="nav-item active ml-5">
                     <a class="nav-link text-warning" href="#">Condition d'utilisation</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-warning ml-3" href="index.html">Retour haut de page</a>
+                <li class="nav-item ml-5">
+                    <a class="nav-link text-warning" href="index.html">Retour haut de page</a>
                 </li>
             </ul>
         </div>
