@@ -19,13 +19,13 @@ fetch("http://localhost:3000/api/teddies/" + id)
 // je recupere les infos precis du nounours (nom, image, prix, description )
         containerProductDetail.innerHTML +=
             `<section class="flex row justify-content-center mt-3 mb-3">
-            <div class="col-5 border card border">                    
+            <div class="col-5 border card border-warning border-right-0">                    
                 <figure id="figure">
                    <p id="erreur"></p>
                    <img src=${showTeddy.imageUrl} class="img-fluid rounded align-items-center mt-3" alt="ours en peluche">
                 </figure>
             </div>  
-            <div id="card-body" class=" col-5 border  flex flex-col flex-wrap bg-light">
+            <div id="card-body" class=" col-5 border border-warning  border-left-0 flex flex-col flex-wrap bg-light">
                 <h2 class="card-title text-center font-weight-bold mt-4">${showTeddy.name}</h2>    
                <figcaption>
                    <p class="card-text text-center">${showTeddy.description}</p>
@@ -57,7 +57,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
                 <img src="star-solid.jpg"/>
                 <img src="star-solid.jpg"/>
                 <img src="star-solid.jpg"/> 
-                <button onclick="window.location.href ="#" type="button"class="add-to-cart float-right mb-4 " data-id="${showTeddy._id}" data-name="${showTeddy.name}" data-price="${showTeddy.price /100}"  value="Commander">Ajouter au panier</button>
+                <button onclick="window.location.href ="#" type="button"class="add-to-cart float-right mb-4 btn btn-warning font-weight-bold border-dark" data-id="${showTeddy._id}" data-name="${showTeddy.name}" data-price="${showTeddy.price /100}"  value="Commander">Ajouter au panier</button>
             </div>
         </section>`;
 
