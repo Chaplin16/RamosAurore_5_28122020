@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="style.css">
     <title>Accueil</title>
 </head>
@@ -13,7 +13,7 @@
 <!-- Header -->
     <header class="container-fluid bg-info">
         <figure class="figure">
-            <img class="img-fluid img-thumbnail " src="bg-teddyBear.jpg" alt="nounours">
+            <img class="img-fluid img-thumbnail" src="bg-teddyBear.jpg" alt="nounours">
         </figure>
         <div class="row">    
             <nav class="col navbar navbar-expand navbar-dark">
@@ -28,11 +28,13 @@
                         <li class="nav-item active">
                             <a class="nav-link text-warning" href="index.html">Accueil</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ">
                             <a class="nav-link text-warning" href="#">Une question?</a>
+        
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-warning" href="#">Panier</a>
+                            <a class="nav-link text-warning" href="orderProduct.html">Panier</a>
+                            <img class="ml-3" src="cart_icon_128475.svg" alt="panier des achats"/>
                         </li>
                     </ul>
                 </div> 
@@ -51,18 +53,18 @@
     <footer class="row ">
         <div class="col-12 bg-secondary">
             <ul class="navbar-nav font-weight-bold w-100 justify-content-end">
-                <li class="nav-item active">
-                    <a class="nav-link text-warning" href="#">condition d'utilisation</a>
+                <li class="nav-item active ml-3">
+                    <a class="nav-link text-warning" href="#">Condition d'utilisation</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-warning" href="index.html">Retour haut de page</a>
+                    <a class="nav-link text-warning ml-3" href="index.html">Retour haut de page</a>
                 </li>
             </ul>
         </div>
     </footer>
 
     <script src="config.js"></script>
-    <script src="object.js"></script>
+    <script src="teddy.js"></script>
     <script src="showProductArray.js"></script>
     <script src="showProductDetail.js"></script>
 
