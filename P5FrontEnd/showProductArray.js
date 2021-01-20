@@ -29,8 +29,9 @@ function showProduct(product) {
                 <img src="star-solid.jpg"/>
                 <img src="star-solid.jpg"/>
                 <img src="star-solid.jpg"/>
-            
-            <button onclick="window.location.href ="#" type="button" value="Commander" class="btn btn-warning font-weight-bold border-dark  text-right float-right">Commander</button>
+                
+                <button onclick="window.location.href ="#" type="button"class="add-to-cart float-right mb-4 btn btn-warning font-weight-bold border-dark" data-id="${product.id}" data-name="${product.name}" data-price="${product.price /100}"  value="Commander">Ajouter au panier</button>
+
         </div>
     </div>
     </div>`;
