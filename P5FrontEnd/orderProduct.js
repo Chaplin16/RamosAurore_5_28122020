@@ -1,36 +1,30 @@
-// // //creation des variables
 
-//variable de l endroit où je recupere les quantités
-// let quantity = document.getElementsByClassName("quantity")[0];
-// console.log(document.getElementsByClassName("quantity"))
-// let resultChoiseQuantity = document.getElementsByClassName("resultChoiseQuantity");
-// console.log(quantity)
-// // creation ecouteur d evenement avec recuperation des quantités pour affichage dans le panier
-// quantity.addEventListener("input", function(event){
-//     console.log(event)
-//     resultChoiseQuantity.innertext = event.target.value;
-//     console.log(resultChoiseQuantity)
-//   });
- 
+let plushId = localStorage.getItem('id');
+
+let btn = localStorage.getItem('btn');
+console.log(btn )
 
 
-// //variable pour recuperer les infos du boutton
-// let btnAddToCart = document.getElementsByClassName('addToCart');
+btn.addEventLister('click', function() {
+    let cartTableBody = document.getElementById("cart-tablebody");
+    let plushPrice = localStorage.getItem('price');
+    let plushName = localStorage.getItem('firstName');
+    let plushQuantity = localStorage.getItem('quantity');
 
-// console.log(btnAddToCart)
-
-// let teddyPrice = btnAddToCart.getAttribute("data-price");
-// let teddyId = btnAddToCart.getAttribute('id');
-// let teddyName = btnAddToCart.getAttribute('data-name');
-// console.log(teddyPrice)
-// console.log(teddyId)
-// console.log(teddyName)
-
-
-  // btnAddToCart.click(function() {
-
-  //   let $this = $(this);
-  //   let name = $(this).data('data-name');
-  //   let price = Number($(this).data('data-price / 100'));
-  // console.log(name)
-  //  }); 
+    cartTableBody.innerHTML +=
+      `<tr class="bg-white">
+              <td>${plushPrice}</td>
+              <td class="text-right pl-5">${plushName}</td>
+              <td id="resultChoiseQuantity" class="text-left pl-5">${plushQuantity}</td>
+              <td><img class="ml-4 h-75" src="trash-can_38501.png"></td>
+              <td class="text-center">0€</td>
+          </tr>
+          <!--ligne des totaux-->
+          <tr class="bg-white">
+              <td>Prix total</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="text-center">0€</td>
+          </tr>`;
+  })
