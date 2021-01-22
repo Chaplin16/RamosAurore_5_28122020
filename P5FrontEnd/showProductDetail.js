@@ -57,7 +57,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
                 <img src="star-solid.jpg"/>
                 <img src="star-solid.jpg"/>
                 <img src="star-solid.jpg"/> 
-                <input type="submit" onclick= "window.location.href ='orderProduct.html';" id="addToCart" class="float-right mb-4 btn btn-warning font-weight-bold border-dark" data-id="${showTeddy._id}" data-name="${showTeddy.name}" data-price="${showTeddy.price /100}" value="Commander"></button>
+                <input type="submit" id="addToCart" onclick= "window.location.href ='orderProduct.html';"  class="float-right mb-4 btn btn-warning font-weight-bold border-dark" data-id="${showTeddy._id}" data-name="${showTeddy.name}" data-price="${showTeddy.price /100}" value="Commander"></button>
             </div>
         </section>`;
         
@@ -65,16 +65,15 @@ fetch("http://localhost:3000/api/teddies/" + id)
         //variable de l endroit où je recupere les quantités
         let quantity = document.getElementById("quantity");  
              console.log(quantity) 
-           
+        let quantityValue = quantity.value;  
+        console.log(quantityValue)
         let quantityInCart = document.getElementById("quantity-in-cart");
             console.log(quantityInCart)//<p id="quantity-in-cart"></p>
         
         // creation ecouteur d evenement avec recuperation des quantités pour affichage dans le panier 
        
          quantity.addEventListener("input", function() { 
-            quantityInCart.innerHTML = `<span>${quantity.value}</span> articles`;
-           
-            
+            quantityInCart.innerHTML = `<span>${quantity.value}</span> articles`;    
          });
 
  //RECUPERER LES INFOS DU BOUTON
@@ -90,6 +89,12 @@ fetch("http://localhost:3000/api/teddies/" + id)
         console.log(teddyId) // 5be9c8541c9d440000665243
         console.log(teddyName) // Norbert
 
+//CREATION DU LOCAL STORAGE
+        localStorage.setItem('btn', btnAddToCart)
+        localStorage.setItem('price',teddyPrice)
+        localStorage.setItem('id',teddyId)
+        localStorage.setItem('firstName',teddyName)
+        localStorage.setItem('quantity',quantityValue)
             
 
 //AFFICHER LES OPTIONS DE COULEURS        
