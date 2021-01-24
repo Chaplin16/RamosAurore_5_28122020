@@ -29,7 +29,7 @@ function showProduct(product) {
                 <img src="star-solid.jpg"/>
                 <img src="star-solid.jpg"/>
                 
-                <input type="submit" id="btnListProduct" type="button" onclick="window.location.href ='${url}';" class="float-right mb-4 btn btn-warning font-weight-bold border-dark" data-id="${product.id}" data-name="${product.name}" data-price="${product.price /100}" value="Commander"/>
+                <input type="submit" id="btnListProduct" type="button" onclick="window.location.href ='${url}';" class="float-right mb-4 btn btn-warning font-weight-bold border-dark" data-id="${product.id}" data-name="${product.name}" data-price="${product.price /100}" value="Plus de détails"/>
 
         </div>
     </div>
