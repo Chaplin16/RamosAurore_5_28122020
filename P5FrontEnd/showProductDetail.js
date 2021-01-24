@@ -72,12 +72,17 @@ fetch("http://localhost:3000/api/teddies/" + id)
     // variable de la fiche produit où je veux rajouter les options de couleurs
         let choise = document.getElementById("choise");
     // rajout des options de couleurs dans cette variable 
-            choise.innerHTML += 
-            `<label class="form-check-label pb-1">
-                Choississez votre couleur: 
-             </label><br>
+        choise.innerHTML += 
+        `<label class="form-check-label pb-1">
+        Choississez votre couleur: 
+            </label><br>
             <select id="clr" name="color">
             ${stringOptionColor}</select>`;
+
+        let color = stringOptionColor;
+        choise.addEventListener("input", function() {
+            alert('la couleur ' + color + ' a été selectionné')
+        });
 
             
 
@@ -101,7 +106,8 @@ fetch("http://localhost:3000/api/teddies/" + id)
     btnAddToCart.addEventListener('click', function() {
         localStorage.setItem('price', price)
         localStorage.setItem('firstname', firstName)
-        localStorage.setItem('quantity',quantity.value) 
+        localStorage.setItem('quantity',quantity.value)
+        localStorage.setItem('color', color) 
         location.href ='orderProduct.html'
     })
 
