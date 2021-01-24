@@ -57,65 +57,54 @@ fetch("http://localhost:3000/api/teddies/" + id)
                 <img src="star-solid.jpg"/>
                 <img src="star-solid.jpg"/>
                 <img src="star-solid.jpg"/> 
-                <input type="submit" id="addToCart" onclick= "window.location.href ='orderProduct.html';"  class="float-right mb-4 btn btn-warning font-weight-bold border-dark" data-id="${showTeddy._id}" data-name="${showTeddy.name}" data-price="${showTeddy.price /100}" value="Commander"></button>
+                <input type="submit" id="addToCart"   class="float-right mb-4 btn btn-warning font-weight-bold border-dark" value="Commander" data-id="${showTeddy._id}" data-name="${showTeddy.name}" data-price="${showTeddy.price/100}"></>
             </div>
         </section>`;
-        
-//AFFICHER LA QUANTITE DE PRODUIT A ACHETER DANS LE PANIER
-        //variable de l endroit où je recupere les quantités
-        let quantity = document.getElementById("quantity");  
-             console.log(quantity) 
-        let quantityValue = quantity.value;  
-        console.log(quantityValue)
-        let quantityInCart = document.getElementById("quantity-in-cart");
-            console.log(quantityInCart)//<p id="quantity-in-cart"></p>
-        
-        // creation ecouteur d evenement avec recuperation des quantités pour affichage dans le panier 
-       
-         quantity.addEventListener("input", function() { 
-            quantityInCart.innerHTML = `<span>${quantity.value}</span> articles`;    
-         });
-
- //RECUPERER LES INFOS DU BOUTON
-        let btnAddToCart = document.getElementById("addToCart");
-            
-        console.log(btnAddToCart) // <input type="submit" onclick= "window.location.href ='orderProduct.html';" id="addToCart" class="float-right mb-4 btn btn-warning font-weight-bold border-dark" data-id="5be9c8541c9d440000665243" data-name="Norbert" data-price="29" value="Commander"></button>
-            
-        let teddyPrice = btnAddToCart.dataset.price;
-        let teddyId = btnAddToCart.dataset.id;
-        let teddyName = btnAddToCart.dataset.name;
-
-        console.log(teddyPrice) // 29
-        console.log(teddyId) // 5be9c8541c9d440000665243
-        console.log(teddyName) // Norbert
-
-//CREATION DU LOCAL STORAGE
-        localStorage.setItem('btn', btnAddToCart)
-        localStorage.setItem('price',teddyPrice)
-        localStorage.setItem('id',teddyId)
-        localStorage.setItem('firstName',teddyName)
-        localStorage.setItem('quantity',quantityValue)
-            
 
 //AFFICHER LES OPTIONS DE COULEURS        
-// je cree ma variable d options de couleurs 
+    // je cree ma variable d options de couleurs 
         let stringOptionColor = ""; 
 
-// j utilise une boucle for pour notifier chaque couleur
+    // j utilise une boucle for pour notifier chaque couleur
         for (let color of showTeddy.colors) {
              stringOptionColor += `<option value="${color}">${color}</option>`
-         }
-
-// variable de la fiche produit où je veux rajouter les options de couleurs
-        const choise = document.getElementById("choise");
-
-// rajout des options de couleurs dans cette variable 
+         } 
+    // variable de la fiche produit où je veux rajouter les options de couleurs
+        let choise = document.getElementById("choise");
+    // rajout des options de couleurs dans cette variable 
             choise.innerHTML += 
             `<label class="form-check-label pb-1">
                 Choississez votre couleur: 
              </label><br>
             <select id="clr" name="color">
-            ${stringOptionColor}</select>`
- 
-    });
-    
+            ${stringOptionColor}</select>`;
+
+            
+
+//AFFICHER LA QUANTITE DE PRODUIT A ACHETER DANS LE PANIER
+    //variable de l endroit où je recupere les quantités
+        let quantity = document.getElementById("quantity");  
+        let quantityHeader = document.getElementById("quantity-header");
+    // creation ecouteur d evenement avec recuperation des quantités pour affichage dans le panier 
+        quantity.addEventListener("input", function() { 
+            quantityHeader.innerHTML = `<span>${quantity.value}</span> articles`; 
+            alert(quantity.value + ' peluches ajoutées au panier');
+        });
+
+
+ //RECUPERER LES INFOS DU BOUTON
+        let btnAddToCart = document.getElementById("addToCart");
+        let price = btnAddToCart.dataset.price;
+        let firstName = btnAddToCart.dataset.name;
+
+//ENREGISTREMENT DES INFOS DANS LOCAL STORAGE AU CLICK DE L UTILISATEUR   
+    btnAddToCart.addEventListener('click', function() {
+        localStorage.setItem('price', price)
+        localStorage.setItem('firstname', firstName)
+        localStorage.setItem('quantity',quantity.value) 
+        location.href ='orderProduct.html'
+    })
+
+});
+      
+
