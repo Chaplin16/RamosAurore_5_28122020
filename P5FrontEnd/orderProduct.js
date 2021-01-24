@@ -1,25 +1,24 @@
 ///recuuperer les infos de
-    
-  let firstname = localStorage.getItem('firstname')
-  let price = localStorage.getItem('price')
-  let quantity = localStorage.getItem('quantity')
-  let color = localStorage.getItem('color')
+
+let firstname = localStorage.getItem('firstname')
+let price = localStorage.getItem('price')
+let quantity = localStorage.getItem('quantity')
+let color = localStorage.getItem('color')
+
+let cartTableBody = document.getElementById("cart-tablebody");
 
 
- let cartTableBody = document.getElementById("cart-tablebody");
+let cart = [];
+for (let i = 0; i < cart.length; i++) {
+  cart.push(data);
+}
 
 
- let cart = [];
- for (let i =0; i<cart.length; i++) {
-     cart.push(data);
- }
+cartTableBody.innerHTML = "";
+let total = 0;
+total += price * quantity;
 
-
- cartTableBody.innerHTML = "";
- let total = 0;
- total += price*quantity; 
-
-      cartTableBody.innerHTML += `
+cartTableBody.innerHTML += `
         <tr class="bg-white">
           <td>${firstname}</td>
           <td class="text-left pl-5">${price}€</td>
@@ -38,13 +37,13 @@
         </tr>`;
 
 //quand on clique sur la poubelle, la ligne s efface 
-      let trash = document.getElementById("trash");
+let trash = document.getElementById("trash");
 
-      trash.addEventListener('click', function() {
-        cartTableBody.remove
-      })
+trash.addEventListener('click', function () {
+  cartTableBody.remove
+})
 
 // afficher la quantite total d articles voulues
-let quantityInCart = document.getElementById("quantity-in-cart"); 
+let quantityInCart = document.getElementById("quantity-in-cart");
 
 quantityInCart.innerHTML = `<span>${quantity}</span> articles`; 

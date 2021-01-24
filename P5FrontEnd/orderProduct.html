@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,14 @@
     <link rel="stylesheet" href="style.css">
     <title>orderProduct</title>
 </head>
+
 <body>
-<!--header-->
+    <!--header-->
     <header class="container-fluid bg-info">
         <figure class="figure">
             <img class="img-fluid img-thumbnail " src="bg-teddyBear.jpg" alt="nounours">
         </figure>
-        <div class="row">    
+        <div class="row">
             <nav class="col navbar navbar-expand navbar-dark">
                 <h1>
                     <img class="navbar-brand img-fluid" src="logoOrinoco.png" width="150"></img>
@@ -28,51 +30,52 @@
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link text-warning" href="#">Une question?</a>
-        
+
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-warning" href="#">Panier</a>
-                            <img class="ml-3" src="cart_icon_128475.svg" alt="panier des achats"/>
+                            <img class="ml-3" src="cart_icon_128475.svg" alt="panier des achats" />
                             <div class="dropdown">
                                 <div id="cart">
                                     <p id="quantity-in-cart"></p>
                                 </div>
-                        
+
                             </div>
                         </li>
                     </ul>
-                </div> 
-            </nav>  
+                </div>
+            </nav>
         </div>
     </header>
 
-<!--main-->    
+    <!--main-->
     <main class="bgColor">
         <!--le panier-->
-        <div class="containerOrder pt-3 ml-3 mr-3 ">      
+        <div class="containerOrder pt-3 ml-3 mr-3 ">
             <h4 class="font-weight-bold pl-3">Aperçu de votre panier</h4>
             <form class="form-horizontal" role="form" method="get" action="#">
-                <div class="table_box_panier mt-4 ml-5 mr-5 "><!--contient le tableau-->
-                <!--le tableau-->    
+                <div class="table_box_panier mt-4 ml-5 mr-5 ">
+                    <!--contient le tableau-->
+                    <!--le tableau-->
                     <table class="table border">
                         <!--entete tableau-->
-                        <thead  class="table-striped bg-light ">
-                        <tr>
-                            <th>Articles</th>
-                            <th>Prix unitaire</th>
-                            <th class="pr-4">Couleur</th>
-                            <th>Quantité</th>
-                            <th>Supprimer</th>
-                            <th class="text-center">Prix Total</th>
-                        </tr>
+                        <thead class="table-striped bg-light ">
+                            <tr>
+                                <th>Articles</th>
+                                <th>Prix unitaire</th>
+                                <th class="pr-4">Couleur</th>
+                                <th>Quantité</th>
+                                <th>Supprimer</th>
+                                <th class="text-center">Prix Total</th>
+                            </tr>
                         </thead>
-                            <tbody id="cart-tablebody">
-                        <!--1ere ligne sur le js orderProduct.js-->
-                        </tbody>    
-                    </table>                    
-                </div>       
-            </form> 
-            <button class="btn btn-warning border-dark font-weight-bold mt-4 mb-4 ml-5">Envoyer</button>         
+                        <tbody id="cart-tablebody">
+                            <!--1ere ligne sur le js orderProduct.js-->
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+            <button class="btn btn-warning border-dark font-weight-bold mt-4 mb-4 ml-5">Envoyer</button>
         </div>
         <!--fin du panier-->
 
@@ -80,15 +83,15 @@
         <div class="containerForm pl-3 pt-3">
             <h4 class="font-weight-bold pl-3">Formulaire de contact</h4>
             <form class="row g-3 mt-3 ml-4 mr-5">
-                
+
                 <div class="col-md-6">
                     <label for="inputFisrtName" class="form-label">Nom</label>
                     <input type="text" class="form-control" id="inputCity">
-                </div> 
+                </div>
                 <div class="col-md-6">
                     <label for="inputLastName" class="form-label">Prenom</label>
                     <input type="text" class="form-control" id="inputCity">
-                </div> 
+                </div>
                 <div class="col-md-6">
                     <label for="inputEmail4" class="form-label">Email</label>
                     <input type="email" class="form-control" id="inputEmail4" placeholder="email@amoi.fr">
@@ -99,26 +102,28 @@
                 </div>
                 <div class="col-12">
                     <label for="inputAddress2" class="form-label">Complément d'adresse</label>
-                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                    <input type="text" class="form-control" id="inputAddress2"
+                        placeholder="Apartment, studio, or floor">
                 </div>
                 <div class="col-md-6">
                     <label for="inputCity" class="form-label">Ville</label>
                     <input type="text" class="form-control" id="inputCity">
-                </div> 
+                </div>
                 <div class="col-md-2">
                     <label for="inputZip" class="form-label">Code Postal</label>
                     <input type="text" class="form-control" id="inputZip">
                 </div>
                 <div class="col-12 mt-5">
-                    <button type="submit" class="btn btn-warning border-dark font-weight-bold mb-4 ml-1">Envoyer</button>
+                    <button type="submit"
+                        class="btn btn-warning border-dark font-weight-bold mb-4 ml-1">Envoyer</button>
                 </div>
             </form>
         </div>
-    </main>    
-        <!--fin du formulaire de contact"-->
- 
-        <!---Footer -->
-     <footer class="row">
+    </main>
+    <!--fin du formulaire de contact"-->
+
+    <!---Footer -->
+    <footer class="row">
         <div class="col-12 bg-secondary">
             <ul class="navbar-nav font-weight-bold w-100 justify-content-end">
                 <li class="nav-item active ml-5">
@@ -136,11 +141,11 @@
     <script src="showProductDetail.js"></script>
     <script src="showProductArray.js"></script>
     <script src="orderProduct.js"></script>
-    
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-    crossorigin="anonymous"></script>
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 </body>
+
 </html>

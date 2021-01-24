@@ -9,13 +9,13 @@ const id = urlParams.get("id");
 
 //j envoi une requete avec l'url precis(id) du nounours
 fetch("http://localhost:3000/api/teddies/" + id)
-//premiere promesse avec la reponse json
+    //premiere promesse avec la reponse json
     .then(function (response) {
-        return response.json() 
+        return response.json()
     })
-//je cree une fonction pour recuperer les donnees de cette url
+    //je cree une fonction pour recuperer les donnees de cette url
     .then(function (showTeddy) {
-       
+
         // je recupere les infos precis du nounours (nom, image, prix, description )
         containerProductDetail.innerHTML +=
             `<section class="flex row justify-content-center mt-3 mb-3">
@@ -57,60 +57,73 @@ fetch("http://localhost:3000/api/teddies/" + id)
                 <img src="star-solid.jpg"/>
                 <img src="star-solid.jpg"/>
                 <img src="star-solid.jpg"/> 
-                <input type="submit" id="addToCart"   class="float-right mb-4 btn btn-warning font-weight-bold border-dark" value="Commander" data-id="${showTeddy._id}" data-name="${showTeddy.name}" data-price="${showTeddy.price/100}"></>
+                <input type="submit" id="addToCart"   class="float-right mb-4 btn btn-warning font-weight-bold border-dark" value="Commander" data-id="${showTeddy._id}" data-name="${showTeddy.name}" data-price="${showTeddy.price / 100}"></>
             </div>
         </section>`;
 
 //AFFICHER LES OPTIONS DE COULEURS        
-    // je cree ma variable d options de couleurs 
-        let stringOptionColor = ""; 
+        // je cree ma variable d options de couleurs 
+        let stringOptionColor = "";
 
-    // j utilise une boucle for pour notifier chaque couleur
+        // j utilise une boucle for pour notifier chaque couleur
         for (let color of showTeddy.colors) {
-             stringOptionColor += `<option value="${color}">${color}</option>`
-         } 
-    // variable de la fiche produit où je veux rajouter les options de couleurs
+            stringOptionColor += `<option value="${color}">${color}</option>`
+        }
+        // variable de la fiche produit où je veux rajouter les options de couleurs
         let choise = document.getElementById("choise");
-    // rajout des options de couleurs dans cette variable 
-        choise.innerHTML += 
-        `<label class="form-check-label pb-1">
+        // rajout des options de couleurs dans cette variable 
+        choise.innerHTML +=
+            `<label class="form-check-label pb-1">
         Choississez votre couleur: 
             </label><br>
             <select id="clr" name="color">
             ${stringOptionColor}</select>`;
-
-        let color = stringOptionColor;
-        choise.addEventListener("input", function() {
-            alert('la couleur ' + color + ' a été selectionné')
+        // je cree une variable avec la premiere couleur selectionnée
+        let color = showTeddy.colors[0];
+        // ecouteur d evenement pour recuperer la couleur selectionnée par l'utilisateur
+        choise.addEventListener("input", function (event) {
+            color = event.target.value;
+            alert('la couleur ' + event.target.value + ' a été selectionnée');
         });
 
-            
-
 //AFFICHER LA QUANTITE DE PRODUIT A ACHETER DANS LE PANIER
-    //variable de l endroit où je recupere les quantités
-        let quantity = document.getElementById("quantity");  
+        //variable de l endroit où je recupere les quantités
+        let quantity = document.getElementById("quantity");
         let quantityHeader = document.getElementById("quantity-header");
-    // creation ecouteur d evenement avec recuperation des quantités pour affichage dans le panier 
-        quantity.addEventListener("input", function() { 
-            quantityHeader.innerHTML = `<span>${quantity.value}</span> articles`; 
+        // écouteur d evenement pour recupérer les quantités sélectionnées par l'utilisateur 
+        quantity.addEventListener("input", function () {
+            quantityHeader.innerHTML = `<span>${quantity.value}</span> articles`;
             alert(quantity.value + ' peluches ajoutées au panier');
         });
 
 
- //RECUPERER LES INFOS DU BOUTON
+//RECUPERER LES INFOS DU BOUTON
         let btnAddToCart = document.getElementById("addToCart");
+        let idItem = btnAddToCart.dataset.id;
         let price = btnAddToCart.dataset.price;
         let firstName = btnAddToCart.dataset.name;
 
-//ENREGISTREMENT DES INFOS DANS LOCAL STORAGE AU CLICK DE L UTILISATEUR   
-    btnAddToCart.addEventListener('click', function() {
-        localStorage.setItem('price', price)
-        localStorage.setItem('firstname', firstName)
-        localStorage.setItem('quantity',quantity.value)
-        localStorage.setItem('color', color) 
-        location.href ='orderProduct.html'
-    })
 
-});
-      
+    // let cardTeddy = {
+    //     id: idItem,
+    //     firstName: firstName,
+    //     price: price,
+    //     color: color,
+    //     quantity: quantity.value
+    // }
+
+
+//ENREGISTREMENT DES INFOS DANS LOCAL STORAGE AU CLICK DE L UTILISATEUR   
+        btnAddToCart.addEventListener('click', function () {
+        //    localStorage.setItem('cardTeddy', cardTeddy)
+            localStorage.setItem('id',idItem)
+            localStorage.setItem('price', price)
+            localStorage.setItem('firstname', firstName)
+            localStorage.setItem('quantity', quantity.value)
+            localStorage.setItem('color', color)
+            location.href = 'orderProduct.html'
+        })
+
+    });
+
 
