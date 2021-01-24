@@ -30,7 +30,7 @@ function showProduct(product) {
                 <img src="star-solid.jpg"/>
                 <img src="star-solid.jpg"/>
                 
-                <input type="submit" onclick= "window.location.href ='orderProduct.html';" type="button"class="add-to-cart float-right mb-4 btn btn-warning font-weight-bold border-dark" data-id="${product.id}" data-name="${product.name}" data-price="${product.price /100}" value="Commander"></button>
+                <input type="submit" id="btnListProduct" type="button"class="add-to-cart float-right mb-4 btn btn-warning font-weight-bold border-dark" data-id="${product.id}" data-name="${product.name}" data-price="${product.price /100}" value="Commander"></button>
 
         </div>
     </div>
@@ -52,6 +52,20 @@ myFetch.then(function (response) {
 // j appelle ma fonction de la ligne 6 en lui passant en parametre teddy            
         showProduct(teddy);
         }
+
+        let btnListProduct = document.getElementById("btnListProduct");
+        let price = btnListProduct.dataset.price;
+        let firstName = btnListProduct.dataset.name;
+        let quantity = 1;
+
+
+        btnListProduct.addEventListener('click', function() {
+            localStorage.setItem('price', price)
+            localStorage.setItem('firstname', firstName)
+            localStorage.setItem('quantity',quantity) 
+            location.href ='orderProduct.html'
+        })
+
 
     })       
 //le retour en cas de non connection au serveur 
