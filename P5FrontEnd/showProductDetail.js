@@ -3,9 +3,11 @@
 // variable (html placé dans la fiche produit)
 let containerProductDetail = document.getElementById('containerProductDetail');
 
+
 //je recuperele le parametre (id) de la fin de l url
 const urlParams = new URL(document.location).searchParams;
 const id = urlParams.get("id");
+
 
 //j envoi une requete avec l'url precis(id) du nounours
 fetch("http://localhost:3000/api/teddies/" + id)
@@ -103,27 +105,27 @@ fetch("http://localhost:3000/api/teddies/" + id)
         let price = btnAddToCart.dataset.price;
         let firstName = btnAddToCart.dataset.name;
 
-
-    // let cardTeddy = {
-    //     id: idItem,
-    //     firstName: firstName,
-    //     price: price,
-    //     color: color,
-    //     quantity: quantity.value
-    // }
-
+        
+        // cardTeddy = {
+        //         id: idItem,
+        //         firstName: firstName,
+        //         price: price,
+        //         color: color,
+        //         quantity: quantity.value
+        // }
+        
 
 //ENREGISTREMENT DES INFOS DANS LOCAL STORAGE AU CLICK DE L UTILISATEUR   
         btnAddToCart.addEventListener('click', function () {
-        //    localStorage.setItem('cardTeddy', cardTeddy)
-            localStorage.setItem('id',idItem)
+
+            // localStorage.setItem('cardTeddy', cardTeddy)              
+            localStorage.setItem('idItem',idItem)
             localStorage.setItem('price', price)
             localStorage.setItem('firstname', firstName)
             localStorage.setItem('quantity', quantity.value)
             localStorage.setItem('color', color)
             location.href = 'orderProduct.html'
         })
-
     });
 
 

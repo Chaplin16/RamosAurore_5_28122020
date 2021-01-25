@@ -2,6 +2,8 @@
 
 // variable où je placerai le html en js
 let containerProduct = document.getElementById('listProduct'); 
+
+
 //variable de l url de api avec choix du produit dans config.api
 var myFetch = fetch(config.host + config.api)
 
@@ -10,7 +12,8 @@ var myFetch = fetch(config.host + config.api)
 function showProduct(product) { 
 // je recupere l url où j y rajoute l id de la peluche cliquée
     let url = "productDetail.html?id=" + product.id
-// je rajoute le HTML dans le js avec les variables de toutes les propriétés
+
+    // je rajoute le HTML dans le js avec les variables de toutes les propriétés
     containerProduct.innerHTML += 
     `<div class="col-12 col-lg-4">
     <div class="card border-warning border-5 m-4">
