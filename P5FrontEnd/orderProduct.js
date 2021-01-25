@@ -1,17 +1,28 @@
 ///recuuperer les infos de
-
+let idItem = localStorage.getItem('idItem')
 let firstname = localStorage.getItem('firstname')
 let price = localStorage.getItem('price')
 let quantity = localStorage.getItem('quantity')
 let color = localStorage.getItem('color')
 
 let cartTableBody = document.getElementById("cart-tablebody");
-
-
-let cart = [];
-for (let i = 0; i < cart.length; i++) {
-  cart.push(data);
+let shopping = [];
+let cardTeddy = {
+  idItem: idItem,
+  firstname: firstname,
+  price: price,
+  color: color,
+  quantity: quantity
 }
+
+shopping.push(cardTeddy);
+
+shopping.forEach((cardTeddy) => {
+    if(shopping != null) {
+      shopping.push(cardTeddy)
+    } else {
+    shopping = [];
+    }
 
 
 cartTableBody.innerHTML = "";
@@ -20,10 +31,10 @@ total += price * quantity;
 
 cartTableBody.innerHTML += `
         <tr class="bg-white">
-          <td>${firstname}</td>
-          <td class="text-left pl-5">${price}€</td>
-          <td>${color}</td>
-          <td id="resultChoiseQuantity" class="text-left pl-5">${quantity}</td>
+          <td>${cardTeddy.firstname}</td>
+          <td class="text-left pl-5">${cardTeddy.price}€</td>
+          <td>${cardTeddy.color}</td>
+          <td id="resultChoiseQuantity" class="text-left pl-5">${cardTeddy.quantity}</td>
           <td><img id="trash" class="ml-4 h-75" src="trash-can_38501.png"></td>
           <td class="text-center">${total}€</td>
         </tr>
@@ -46,4 +57,4 @@ trash.addEventListener('click', function () {
 // afficher la quantite total d articles voulues
 let quantityInCart = document.getElementById("quantity-in-cart");
 
-quantityInCart.innerHTML = `<span>${quantity}</span> articles`; 
+});
