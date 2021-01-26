@@ -108,7 +108,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
 
 //ENREGISTREMENT DES INFOS DANS LOCAL STORAGE AU CLICK DE L UTILISATEUR   
         btnAddToCart.addEventListener('click', function(){
-            let teddyCard = {
+            let basket = {
                 idItem: idItem,
                 price: price,
                 firstName: firstName,
@@ -116,13 +116,14 @@ fetch("http://localhost:3000/api/teddies/" + id)
                 color: color
             }
             location.href = 'orderProduct.html'
-            addBasket(teddyCard);
+            addBasket(basket);
        })
 });   
+//FIN DE LA REQUETE API 
 
 //FONCTIONS UTILISEES POUR LE LOCAL STORAGE
     function initBasket() {
-        let basket = localStorage.getItem("teddyCard");            
+        let basket = localStorage.getItem("basket");      
         if(basket != null) {
             return JSON.parse(basket)
         } else {
@@ -134,7 +135,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
         basket.push(product);
         localStorage.setItem("basket",JSON.stringify(basket));
     };
-
+   
     // function saveShopping(product) {
     //     localStorage.setItem('panier', JSON.stringify(panier));
     // }   

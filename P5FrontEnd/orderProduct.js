@@ -5,20 +5,17 @@ const panier = JSON.parse(localStorage.getItem("basket"));
 let cartTableBody = document.getElementById("cart-tablebody");
 cartTableBody.innerHTML ="";
 
-
 //Condition pour afficher le panier
 if (panier) {
-    ligneTableau(); //appelle la fonction que tu trouveras ci-dessous
+    ligneTableau(); 
     } else {
     alert("le panier est vide")
 }
-console.log(panier)
- //Boucle pour importer données de chaque article panier
 
-
+ //Boucle d affichage des lignes de commande 
 function ligneTableau() {
 let total = 0;
-
+//les lignes de commande  
     panier.forEach((basket) => {
     total += basket.price * basket.quantity;   
     cartTableBody.innerHTML += `
@@ -31,7 +28,7 @@ let total = 0;
             <td class="text-center">${total}€</td>
           </tr>`;  
     }); 
-
+// la ligne des totaux
     cartTableBody.innerHTML += 
           `<tr class="bg-white">
             <td>Prix total</td>
