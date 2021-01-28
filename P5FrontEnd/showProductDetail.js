@@ -63,7 +63,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
             </div>
         </section>`;
 
-//AFFICHER LES OPTIONS DE COULEURS        
+        //AFFICHER LES OPTIONS DE COULEURS        
         // je cree ma variable d options de couleurs 
         let stringOptionColor = "";
 
@@ -88,26 +88,24 @@ fetch("http://localhost:3000/api/teddies/" + id)
             alert('la couleur ' + event.target.value + ' a été selectionnée');
         });
 
-//AFFICHER LA QUANTITE DE PRODUIT A ACHETER DANS LE PANIER
+        //AFFICHER LA QUANTITE DE PRODUIT A ACHETER DANS LE PANIER
         //variable de l endroit où je recupere les quantités
         let quantity = document.getElementById("quantity");
-        let quantityHeader = document.getElementById("quantity-header");
-        // écouteur d evenement pour recupérer les quantités sélectionnées par l'utilisateur 
-        // quantity.addEventListener("input", function () {
-        //     quantityHeader.innerHTML = `<span>${quantity.value}</span> articles`;
-        //     alert(quantity.value + ' peluches ajoutées au panier');
-        // });
+        let quantityInCart = document.getElementById("quantity-in-cart"); 
+        let qtt = 0;
+        qtt = localStorage.getItem("qtt");
+        quantityInCart.innerHTML = `<span>${qtt}</span> articles`;     
+     
 
-
-//RECUPERER LES INFOS DU BOUTON
+        //RECUPERER LES INFOS DU BOUTON
         let btnAddToCart = document.getElementById("addToCart");
         let idItem = btnAddToCart.dataset.id;
         let price = btnAddToCart.dataset.price;
         let firstName = btnAddToCart.dataset.name;
-     
 
-//ENREGISTREMENT DES INFOS DANS LOCAL STORAGE AU CLICK DE L UTILISATEUR   
-        btnAddToCart.addEventListener('click', function(){
+
+        //ENREGISTREMENT DES INFOS DANS LOCAL STORAGE AU CLICK DE L UTILISATEUR   
+        btnAddToCart.addEventListener('click', function () {
             let basket = {
                 idItem: idItem,
                 price: price,
@@ -118,5 +116,5 @@ fetch("http://localhost:3000/api/teddies/" + id)
             addBasket(basket);
             window.location.assign('orderProduct.html')
 
-       })
-});   
+        })
+    });   

@@ -61,3 +61,9 @@ myFetch.then(function (response) {
  //   console.log('Fetch problem: ' + err.message);
 //});
 
+let quantityInCart = document.getElementById("quantity-in-cart"); 
+let qtt = 0;
+qtt = localStorage.getItem("qtt");
+quantityInCart.innerHTML = `<span>${qtt}</span> articles`;     
+
+
