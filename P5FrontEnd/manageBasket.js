@@ -23,7 +23,7 @@ function remove(product) {
     let basket = initBasket();
     let productFind = basket.find(basketProduct => basketProduct.idItem == product.idItem);
 
-    if (productFind > 1) {
+    if (productFind.quantity > 1) {
         productFind.quantity--;
     } else {
         basket = basket.filter(basketProduct => basketProduct.idItem != product.idItem);
@@ -31,3 +31,4 @@ function remove(product) {
     localStorage.setItem("basket", JSON.stringify(basket));
 
 }
+

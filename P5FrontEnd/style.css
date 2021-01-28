@@ -6,4 +6,7 @@
   float: right;
 }
 
+.trash {
+  cursor:pointer;
+}
 /*# sourceMappingURL=style.css.map */
