@@ -93,10 +93,10 @@ fetch("http://localhost:3000/api/teddies/" + id)
         let quantity = document.getElementById("quantity");
         let quantityHeader = document.getElementById("quantity-header");
         // écouteur d evenement pour recupérer les quantités sélectionnées par l'utilisateur 
-        quantity.addEventListener("input", function () {
-            quantityHeader.innerHTML = `<span>${quantity.value}</span> articles`;
-            alert(quantity.value + ' peluches ajoutées au panier');
-        });
+        // quantity.addEventListener("input", function () {
+        //     quantityHeader.innerHTML = `<span>${quantity.value}</span> articles`;
+        //     alert(quantity.value + ' peluches ajoutées au panier');
+        // });
 
 
 //RECUPERER LES INFOS DU BOUTON
@@ -115,62 +115,8 @@ fetch("http://localhost:3000/api/teddies/" + id)
                 quantity: quantity.value,
                 color: color
             }
-            location.href = 'orderProduct.html'
             addBasket(basket);
+            window.location.assign('orderProduct.html')
+
        })
 });   
-//FIN DE LA REQUETE API 
-
-//FONCTIONS UTILISEES POUR LE LOCAL STORAGE
-    function initBasket() {
-        let basket = localStorage.getItem("basket");      
-        if(basket != null) {
-            return JSON.parse(basket)
-        } else {
-            return [];
-        } 
-    };
-    function addBasket (product) {
-        let basket = initBasket();
-        basket.push(product);
-        localStorage.setItem("basket",JSON.stringify(basket));
-    };
-   
-    // function saveShopping(product) {
-    //     localStorage.setItem('panier', JSON.stringify(panier));
-    // }   
-
-    
-/////////////////////////////////////////
-            // function CardTeddy(idItem,price,firstName,quantityValue,color) {
-            //     this.idItem = idItem;
-            //     this.price = price;
-            //     this.firstName = firstName;
-            //     this.quantityValue = quantityValue;
-            //     this.color = color;
-            // }
-
-            // function Shopping() {
-            //     this.list = [];
-            //     this.addcardTeddy = function(idItem,price,firstName,quantityValue,color) {
-            //         var index = this.getcardTeddy(idItem);
-            //         if (index == -1) this.list.push(new CardTeddy(idItem,price,firstName,quantityValue,color));
-            //         else this.list[index].quantityValue++;
-            //     }
-               
-            //     this.cardTeddy = function(idItem) {
-                
-            //         for(var i = 0 ; i <this.list.length ; i++)
-            //             if (idItem == this.list[i].getidItem()) return i;
-            //         return -1;
-            //     }
-            //     this.supprimerArticle = function(idItem){
-                
-            //         var index = this.getcardTeddy(idItem);
-            //         if (index > -1) this.list.splice(index, 1);
-            //     }
-            // }
-                
-
-         
-    

@@ -56,3 +56,16 @@ let MyShopping = (function() {
     }
     };
 })
+
+
+
+ //FONCTION envoieVersServeur()------------------------------------------------------
+ function envoieVersServeur(aEnvoyer) {
+  //Envoie de l'objet "aEnvoyer" vers le serveur
+  const promise01 = fetch("http://localhost:3000/api/cameras/order", {
+  method: "POST",
+  body: JSON.stringify(aEnvoyer),
+  headers: {
+  "Content-Type": "application/json",
+  },
+  });
