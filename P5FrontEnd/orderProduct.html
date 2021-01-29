@@ -60,6 +60,7 @@
                     <!--entete tableau-->
                     <thead class="table-striped bg-light ">
                         <tr>
+                            <th></th>
                             <th>Articles</th>
                             <th>Prix unitaire</th>
                             <th class="pr-4">Couleur</th>
@@ -73,45 +74,51 @@
                     </tbody>
                 </table>
             </div>
-            <button class="btn btn-warning border-dark font-weight-bold mt-4 mb-4 ml-5">Envoyer</button>
         </div>
         <!--fin du panier-->
 
         <!--formulaire de contact-->
-        <div class="containerForm pl-3 pt-3">
+        <div class="containerForm pl-3 pt-5">
             <h4 class="font-weight-bold pl-3">Formulaire de contact</h4>
-            <form class="row g-3 mt-3 ml-4 mr-5">
+            <form class="row g-3 mt-3 ml-4 mr-5 was-validated" novalidate>
 
                 <div class="col-md-6">
-                    <label for="inputFisrtName" class="form-label">Nom</label>
-                    <input type="text" class="form-control" id="inputCity">
+                    <label for="name" class="form-label">Nom</label>
+                    <input type="text" pattern ="[A-zéèêëï]{2,30}" class="form-control" id="name">
                 </div>
                 <div class="col-md-6">
-                    <label for="inputLastName" class="form-label">Prenom</label>
-                    <input type="text" class="form-control" id="inputCity">
+                    <label for="lastName" class="form-label">Prenom</label>
+                    <input type="text" pattern ="[A-zéèêëîï]{2,30}" class="form-control" id="lastName" >
                 </div>
                 <div class="col-md-6">
-                    <label for="inputEmail4" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="email@amoi.fr">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" pattern="[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})" class="form-control" id="email" placeholder="mail@turquoise.fr">
                 </div>
                 <div class="col-12">
-                    <label for="inputAddress" class="form-label">Addresse</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                    <label for="address" class="form-label">Addresse</label>
+                    <input type="text" pattern ="{2,100}" class="form-control" id="address" placeholder=" 123 rue du lac enchanté">
                 </div>
                 <div class="col-md-6">
-                    <label for="inputCity" class="form-label">Ville</label>
-                    <input type="text" class="form-control" id="inputCity">
+                    <label for="city" class="form-label">Ville</label>
+                    <input type="text" pattern ="[A-zéèêëîï]{2,40}" class="form-control" id="city">
                 </div>
                 <div class="col-md-2">
-                    <label for="inputZip" class="form-label">Code Postal</label>
-                    <input type="text" class="form-control" id="inputZip">
+                    <label for="cp" class="form-label">Code Postal</label>
+                    <input type="tel" pattern="[0-9]{5}" maxlength="5" class="form-control" id="cp" placeholder="01234">
                 </div>
-                <div class="col-12 mt-5">
+                <div class="form-group ml-3 pt-5">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="cgu" required>
+                        <label class="form-check-label" for="cgu">J'accepte les conditions générales de vente</label>
+                        <div class="invalid-feedback">Vous devez accepter les CGU pour continuer</div>
+                    </div>
+                </div>
+                <div class="col-12 mt-3">
                     <button type="submit"
                         class="btn btn-warning border-dark font-weight-bold mb-4 ml-1">Envoyer</button>
                 </div>
             </form>
-        </div>
+        </div>    
     </main>
     <!--fin du formulaire de contact"-->
 

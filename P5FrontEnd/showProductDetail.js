@@ -59,7 +59,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
                 <img src="star-solid.jpg"/>
                 <img src="star-solid.jpg"/>
                 <img src="star-solid.jpg"/> 
-                <input type="submit" id="addToCart"   class="float-right mb-4 btn btn-warning font-weight-bold border-dark" value="Commander" data-id="${showTeddy._id}" data-name="${showTeddy.name}" data-price="${showTeddy.price / 100}"></>
+                <input type="submit" id="addToCart" class="float-right mb-4 btn btn-warning font-weight-bold border-dark" value="Commander" data-image="${showTeddy.imageUrl}" data-id="${showTeddy._id}" data-name="${showTeddy.name}" data-price="${showTeddy.price / 100}"></>
             </div>
         </section>`;
 
@@ -99,6 +99,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
 
         //RECUPERER LES INFOS DU BOUTON
         let btnAddToCart = document.getElementById("addToCart");
+        let imageUrl = btnAddToCart.dataset.image;
         let idItem = btnAddToCart.dataset.id;
         let price = btnAddToCart.dataset.price;
         let firstName = btnAddToCart.dataset.name;
@@ -108,6 +109,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
         btnAddToCart.addEventListener('click', function () {
             let basket = {
                 idItem: idItem,
+                imageUrl: imageUrl,
                 price: price,
                 firstName: firstName,
                 quantity: quantity.value,

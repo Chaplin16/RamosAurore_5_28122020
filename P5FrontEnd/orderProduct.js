@@ -45,33 +45,34 @@ function ligneTableau() {
         totalQuantity += parseInt(product.quantity);
 
         cartTableBody.innerHTML += `
-                <tr class="bg-white">
-                <td>${product.firstName}</td>
-                <td class="text-left pl-5">${product.price}€</td>
-                <td>${product.color}</td>
-                <td class="quantity text-left pl-5" data-id="${product.idItem}">${product.quantity}</td>
+            <tr class="bg-white">
+                <td><img class= "img-rounded" src="${product.imageUrl}" width="90"</td>
+                <td class="align-middle">${product.firstName}</td>
+                <td class="text-left pl-5 align-middle">${product.price}€</td>
+                <td class="align-middle">${product.color}</td>
+                <td class="quantity text-left pl-5 align-middle" data-id="${product.idItem}">${product.quantity}</td>
                 <td>       
-                        <img data-id="${product.idItem}" class="trash ml-4 h-75" src="trash-can_38501.png" alt="image d'une poubelle"> 
+                <img data-id="${product.idItem}" class="trash ml-4 h-75 mt-2" src="trash-can_38501.png" alt="image d'une poubelle"> 
                 </td>
-                <td id="calculPriceLine" class="text-center">${total}€</td>
-              </tr>`;
+                <td id="calculPriceLine" class="text-center align-middle">${total}€</td>
+            </tr>`;
     });
     // la ligne des totaux
+        cartTableBody.innerHTML +=
+            `<tr class="bg-light">
+                <td>Prix total</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="text-center font-weight-bold">${totalOrder}€</td>
+            </tr>`;
 
-
-    cartTableBody.innerHTML +=
-        `<tr class="bg-light">
-            <td>Prix total</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="text-center font-weight-bold">${totalOrder}€</td>
-          </tr>`;
-
-    //quantite du panier affiché dans le header
- //   quantityInCart.innerHTML = `<span>${totalQuantity}</span> articles`;
-    // localStorage.setItem("qtt", totalQuantity);
+  //quantite du panier affiché dans le header
+    quantityInCart.innerHTML = `<span>${totalQuantity}</span> articles`;
+    localStorage.setItem("qtt", totalQuantity);
+    localStorage.setItem("totalOrder", totalOrder);
 };
 
 
