@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+    <title>orderConfirmation</title>
+</head>
+
+<body>
+    <!--header-->
+    <header >
+
+            <img class="img-thumbnail img-fluid d-block mx-auto" src="teddyTravel.jpg" alt="image de fond d ecran d une peluche">
+
+    </header>
+    
+    <main class="container-fluid bgColor">
+        <section>
+            <h1 class="text-center display-3 pt-5">
+                Félicitations!
+            </h1>
+            <p class="text-primary text-center mt-3 lead"> 
+            Votre commande a été validée avec succès<br>
+            pour un montant total de
+            <p class="text-center font-weight-bold lead" id=priceOrder></p>    
+            <p class="text-primary text-center mt-5 lead font-weight-bold">Merci d'avoir éffectué vos achats chez ORINOCO</p>
+            </P>
+            <p class="mt-2 text-center font-weight-bold">
+                Voici votre numéro de commande: 
+            </p>
+            <div class="text-center">
+                <button type="submit" class="btn btn-warning border-dark align-items-center font-weight-bold mt-5 mb-5" onclick="window.location.href='index.html';">Retour à la page d'accueil</button>
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+
+    <script src="config.js"></script>
+    <script src="orderConfirmation.js"></script>
+</body>
+</html>
