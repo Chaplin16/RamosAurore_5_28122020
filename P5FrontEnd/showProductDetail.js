@@ -107,6 +107,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
 
         //ENREGISTREMENT DES INFOS DANS LOCAL STORAGE AU CLICK DE L UTILISATEUR   
         btnAddToCart.addEventListener('click', function () {
+            //je cree un objet avec toutes ces propriétés
             let basket = {
                 idItem: idItem,
                 imageUrl: imageUrl,
