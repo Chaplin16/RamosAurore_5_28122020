@@ -1,6 +1,6 @@
 
 //recuperer les infos de la commande 
-const panier = JSON.parse(localStorage.getItem("basket"));
+const basket = JSON.parse(localStorage.getItem("basket"));
 
 //je recupere le lieu d inplantation
 let cartTableBody = document.getElementById("cart-tablebody");
@@ -8,15 +8,17 @@ cartTableBody.innerHTML = "";
 let totalQuantity = 0;
 
 //Condition pour afficher le panier
-if (panier) {
-    ligneTableau();
+if (basket) {
+    rowTable();
 } else {
     alert("le panier est vide")
 }
 
 // fonction pour supprimer une peluche   
 let trash = document.getElementsByClassName("trash");
- for (let btn of trash) {
+
+//j initialise le bouton de la poubelle sur la ligne de commande
+for (let btn of trash) {
     btn.addEventListener('click', function () {
         let idItem = this.dataset.id;
         remove({ idItem: idItem });
@@ -31,19 +33,24 @@ let trash = document.getElementsByClassName("trash");
     });
     
 };
-//Boucle d affichage des lignes de commande 
-function ligneTableau() {
+//j affiche chaque ligne de commande 
+function rowTable() {
     let total = 0;
     let totalOrder = 0;
     let quantityInCart = document.getElementById("quantity-in-cart");
     let totalQuantity = 0;
 
-    //les lignes de commande  
-    panier.forEach((product) => {
+    basket.forEach((product) => {
+    //le prix sur chaque ligne    
         total = product.price * product.quantity;
+
+    //le prix total de la commmande
         totalOrder += total
+
+    // j'additionne les quantités des memes articles    
         totalQuantity += parseInt(product.quantity);
 
+    // le html d'une ligne de commande
         cartTableBody.innerHTML += `
             <tr class="bg-white">
                 <td><img class= "img-rounded" src="${product.imageUrl}" width="90"</td>
@@ -57,7 +64,8 @@ function ligneTableau() {
                 <td id="calculPriceLine" class="text-center align-middle">${total}€</td>
             </tr>`;
     });
-    // la ligne des totaux
+
+    // le html de la ligne des totaux
         cartTableBody.innerHTML +=
             `<tr class="bg-light">
                 <td>Prix total</td>
@@ -69,10 +77,77 @@ function ligneTableau() {
                 <td class="text-center font-weight-bold">${totalOrder}€</td>
             </tr>`;
 
-  //quantite du panier affiché dans le header
+  //nombre d 'articles du panier affiché dans les headers
     quantityInCart.innerHTML = `<span>${totalQuantity}</span> articles`;
     localStorage.setItem("qtt", totalQuantity);
     localStorage.setItem("totalOrder", totalOrder);
 };
+
+console.log(basket)
+////////////////////////////////////////////////////////
+//je recupere l'emplacement du bouton
+let btnSubmit = document.getElementById("btnSubmit");
+
+//je cree le onclick
+btnSubmit.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+//je verifie si le panier contient des articles
+    if(basket.length < 1 || basket == null) {
+        alert("Il n'y a pas d'article dans votre panier!")
+        return false
+    }else {
+
+//je recuperer les donnees 
+        let userName = document.getElementById("userName").value;
+        let userLastName = document.getElementById("userLastName").value;
+        let userEmail = document.getElementById("userEmail").value;
+        let userAdress = document.getElementById("userAdress").value
+        let userCity = document.getElementById("userCity").value;
+        let userZip = document.getElementById("userZip").value;
+
+// je cree un objet avec toutes ces propriétés
+        let user = {
+            'name': userName,
+            'lastName': userLastName,
+            'adress': userAdress,
+            'email': userEmail,
+            'zip': userZip,
+            'city': userCity    
+        }
+
+//création de l'objet reunissant les articles du panier
+        let products = [];
+        console.log(products)
+        for(let i = 0; i < basket.length; i++){
+            products.push(basket[i].idItem);
+        }  
+
+//je cree un objet avec les donnees du formulaire et celles du panier
+        let sendInfo = JSON.stringify({
+        user,
+        products, 
+        });
+
+console.log(products)
+
+//envoie des donnees au serveur    
+        fetch("http://localhost:3000/api/teddies/order", {
+            method: "POST",
+            headers: {"Content-Type": "application/json;charset=UTF-8"},
+            mode:"cors",
+            body: sendInfo            
+        })   
+            .then(function (response) {
+                return response.json()
+            })  
+            .then(function(data) {
+//j enregistre la commande
+	       		localStorage.setItem("numberOrder", JSON.stringify(data));
+//ouverture de la page de confirmation
+	       		window.location = "orderConfirmation.html";
+        })
+    }
+});
 
 
