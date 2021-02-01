@@ -19,8 +19,7 @@
     
     <main class="container-fluid bgColor">
         <section>
-            <h1 class="text-center display-3 pt-5">
-                Félicitations!
+            <h1 id="contactName" class="text-center display-4 pt-5">
             </h1>
             <p class="text-primary text-center mt-3 lead"> 
             Votre commande a été validée avec succès<br>
@@ -31,13 +30,23 @@
             <p class="mt-2 text-center font-weight-bold">
                 Voici votre numéro de commande: 
             </p>
-            <p class="numberOrder"></p>
+            <p class="text-center font-weigh-bold lead" id="numberOrder"></p>
             <div class="text-center">
                 <button type="submit" class="btn btn-warning border-dark align-items-center font-weight-bold mt-5 mb-5" onclick="window.location.href='index.html';">Retour à la page d'accueil</button>
             </div>
         </section>
     </main>
-    <footer></footer>
+    <footer class="row bg-secondary">
+        <div class="col">
+            <ul class="list-inline text-center my-4 ">
+                <li class="list-inline-item"><a href="#" class="text-warning font-weight-bold">À propos</a></li>
+                <li class="list-inline-item">&middot;</li>
+                <li class="list-inline-item"><a href="#" class="text-warning font-weight-bold">Vie privée</a></li>
+                <li class="list-inline-item">&middot;</li>
+                <li class="list-inline-item"><a href="#" class="text-warning font-weight-bold">Conditions d'utilisations</a></li>
+              </ul> 
+        </div>
+    </footer>
 
     <script src="config.js"></script>
     <script src="orderConfirmation.js"></script>

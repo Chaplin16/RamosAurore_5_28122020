@@ -83,57 +83,52 @@ function rowTable() {
     localStorage.setItem("totalOrder", totalOrder);
 };
 
-console.log(basket)
+
 ////////////////////////////////////////////////////////
-//je recupere l'emplacement du bouton
-let btnSubmit = document.getElementById("btnSubmit");
-
-//je cree le onclick
-btnSubmit.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-//je verifie si le panier contient des articles
-    if(basket.length < 1 || basket == null) {
-        alert("Il n'y a pas d'article dans votre panier!")
+//function pour verifier si le panier contient des articles
+function basketIsRight() {  
+if(basket.length < 0 || basket == null) {
+        alert("Il n'y a pas d'article dans votre panier!");
         return false
     }else {
+        console.log("le panier n est pas vide");
+        return true
+    }
+}
 
-//je recuperer les donnees 
-        let userName = document.getElementById("userName").value;
-        let userLastName = document.getElementById("userLastName").value;
-        let userEmail = document.getElementById("userEmail").value;
-        let userAdress = document.getElementById("userAdress").value
-        let userCity = document.getElementById("userCity").value;
-        let userZip = document.getElementById("userZip").value;
-
-// je cree un objet avec toutes ces propriétés
-        let user = {
-            'name': userName,
-            'lastName': userLastName,
-            'adress': userAdress,
-            'email': userEmail,
-            'zip': userZip,
-            'city': userCity    
-        }
-
-//création de l'objet reunissant les articles du panier
+//je recupere l'emplacement du bouton
+let btnSubmit = document.getElementById("btnSubmit");
+ 
+//je cree le onclick sur le bouton
+btnSubmit.addEventListener("click", function (event) {
+    event.preventDefault();
+//verification du panier 
+    if(basketIsRight() == true) {  
+// je cree un objet avec les valeurs que je recupere par les id
+        let contact = {
+                'firstName': document.getElementById("userName").value,
+                'lastName': document.getElementById("userLastName").value,
+                'address': document.getElementById("userAdress").value,
+                'email': document.getElementById("userEmail").value,
+                'city': document.getElementById("userCity").value    
+        }     
+//je cree un tableau reunissant les articles du panier
         let products = [];
-        console.log(products)
         for(let i = 0; i < basket.length; i++){
             products.push(basket[i].idItem);
         }  
-
-//je cree un objet avec les donnees du formulaire et celles du panier
-        let sendInfo = JSON.stringify({
-        user,
-        products, 
-        });
-
+console.log(contact)
 console.log(products)
-
-//envoie des donnees au serveur    
+//je cree un objet avec les donnees du formulaire et le tableau 
+//je fais une chaine de caractere
+        let sendInfo = JSON.stringify({
+            contact,
+            products, 
+        });
+console.log(sendInfo)
+//j'envoie des donnees au serveur    
         fetch("http://localhost:3000/api/teddies/order", {
-            method: "POST",
+            method: "post",
             headers: {"Content-Type": "application/json;charset=UTF-8"},
             mode:"cors",
             body: sendInfo            
@@ -143,11 +138,17 @@ console.log(products)
             })  
             .then(function(data) {
 //j enregistre la commande
-	       		localStorage.setItem("numberOrder", JSON.stringify(data));
+                localStorage.setItem('user', JSON.stringify(data.contact.lastName))
+                localStorage.setItem('order', JSON.stringify(data.orderId));
+    
 //ouverture de la page de confirmation
-	       		window.location = "orderConfirmation.html";
-        })
+	       		window.location.assign("orderConfirmation.html");
+            })
+        
+    } else {
+        alert("votre panier est vide");
     }
+
 });
 
 
