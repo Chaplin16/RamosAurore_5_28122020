@@ -80,34 +80,34 @@
         <!--formulaire de contact-->
         <div class="containerForm pl-3 pt-5">
             <h4 class="font-weight-bold pl-3">Formulaire de contact</h4>
-            <form action="http://localhost:3000/api/teddies" method="post" name="myForm" class="row g-3 mt-3 ml-4 mr-5 was-validated" novalidate>
+            <form action="http://localhost:3000/api/teddies/order" method="post" name="myForm" class="row g-3 mt-3 ml-4 mr-5 was-validated" novalidate>
 
                 <div class="col-md-6">
                     <label for="name" class="form-label">Nom</label>
-                    <input type="text" pattern ="[A-zéèêëï]{2,30}" class="form-control" id="userName" name="userName" value="">
+                    <input type="text" pattern ="[A-zéèêëï]{2,30}" class="form-control" id="userName" name="userName">
                 </div>
 
                 <div class="col-md-6">
                     <label for="lastName" class="form-label">Prenom</label>
-                    <input type="text" pattern ="[A-zéèêëîï]{2,30}" class="form-control" id="userLastName" name="userLastName" value="">
+                    <input type="text" pattern ="[A-zéèêëîï]{2,30}" class="form-control" id="userLastName" name="userLastName">
                 </div>
 
                 <div class="col-md-6">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" pattern="[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})" class="form-control" id="userEmail" placeholder="mail@turquoise.fr" name="userEmail" value="">
+                    <input type="email" pattern="[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})" class="form-control" id="userEmail" placeholder="mail@turquoise.fr" name="userEmail">
                 </div>
 
                 <div class="col-12">
-                    <label for="address" class="form-label">Addresse</label>
-                    <input type="text" class="form-control" id="userAddress" placeholder=" 123 rue du lac enchanté" name="userAdress" value="">
+                    <label for="address" class="form-label">Adresse</label>
+                    <input type="text" class="form-control" id="userAdress" placeholder=" 123 rue du lac enchanté" name="userAdress">
                 </div>
                 <div class="col-md-6">
                     <label for="city" class="form-label">Ville</label>
-                    <input type="text" pattern ="[A-zéèêëîï]{2,40}" class="form-control" id="userCity" name="userCity" value="">
+                    <input type="text" pattern ="[A-zéèêëîï]{2,40}" class="form-control" id="userCity" name="userCity">
                 </div>
                 <div class="col-md-2">
                     <label for="cp" class="form-label">Code Postal</label>
-                    <input type="tel" pattern="[0-9]{5}" maxlength="5" class="form-control" id="userZip" placeholder="01234" name="userZip" value="">
+                    <input type="tel" pattern="[0-9]{5}" maxlength="5" class="form-control" id="userZip" placeholder="01234" name="userZip">
                 </div>
                 <div class="form-group ml-3 pt-5">
                     <div class="form-check" id="cgu">
@@ -122,7 +122,7 @@
                     </div>
                 </div>
                 <div class="col-12 mt-3">
-                    <button type="submit"id="btnSubmit" class="btn btn-warning border-dark font-weight-bold mb-4 ml-1" name="submit" value="Envoyer">Envoyer</button>
+           <input type="submit"id="btnSubmit" class="btn btn-warning border-dark font-weight-bold mb-4 ml-1" name="submit" value="Envoyer"></button>
                 </div>
             </form>
         </div>    
@@ -130,16 +130,15 @@
     <!--fin du formulaire de contact"-->
 
     <!---Footer -->
-    <footer class="row">
-        <div class="col-12 bg-secondary">
-            <ul class="navbar-nav font-weight-bold w-100 justify-content-end">
-                <li class="nav-item active ml-5">
-                    <a class="nav-link text-warning" href="#">Condition d'utilisation</a>
-                </li>
-                <li class="nav-item ml-5">
-                    <a class="nav-link text-warning" href="index.html">Retour haut de page</a>
-                </li>
-            </ul>
+    <footer class="row bg-secondary">
+        <div class="col">
+            <ul class="list-inline text-center my-4 ">
+                <li class="list-inline-item"><a href="#" class="text-warning font-weight-bold">À propos</a></li>
+                <li class="list-inline-item">&middot;</li>
+                <li class="list-inline-item"><a href="#" class="text-warning font-weight-bold">Vie privée</a></li>
+                <li class="list-inline-item">&middot;</li>
+                <li class="list-inline-item"><a href="#" class="text-warning font-weight-bold">Conditions d'utilisations</a></li>
+              </ul> 
         </div>
     </footer>
 

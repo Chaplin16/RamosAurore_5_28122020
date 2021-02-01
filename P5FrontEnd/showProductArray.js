@@ -12,7 +12,6 @@ var myFetch = fetch(config.host + config.api)
 function showProduct(product) { 
 // je recupere l url où j y rajoute l id de la peluche cliquée
     let url = "productDetail.html?id=" + product.id
-    console.log(url)
     // je rajoute le HTML dans le js avec les variables de toutes les propriétés
     containerProduct.innerHTML += 
     `<div class="col-12 col-lg-4">
