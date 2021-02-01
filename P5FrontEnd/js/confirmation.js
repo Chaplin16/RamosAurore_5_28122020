@@ -10,6 +10,7 @@ priceOrder.innerHTML = `<span>${totalOrder}</span> €`;
 let number = document.getElementById("numberOrder");
 //je récupere le numéro de commande
 let order = localStorage.getItem("order");
+order = JSON.parse(order);
 number.innerHTML += `<span>${order}</span>`;
 
 // PRENOM
@@ -17,5 +18,8 @@ number.innerHTML += `<span>${order}</span>`;
 let contactName = document.getElementById("contactName");
 //je recupere le prenom du client
 let user = localStorage.getItem("user");
+user = JSON.parse(user);
 contactName.innerHTML += `<span>FELICITATIONS ${user}!!</span>`;
 
+//je supprime le panier 
+localStorage.clear(order);
