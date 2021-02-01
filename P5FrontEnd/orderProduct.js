@@ -59,7 +59,7 @@ function rowTable() {
                 <td class="align-middle">${product.color}</td>
                 <td class="quantity text-left pl-5 align-middle" data-id="${product.idItem}">${product.quantity}</td>
                 <td>       
-                <img data-id="${product.idItem}" class="trash ml-4 h-75 mt-2" src="trash-can_38501.png" alt="image d'une poubelle"> 
+                <img data-id="${product.idItem}" class="trash ml-4 h-75 mt-2" src="img/trash-can_38501.png" alt="image d'une poubelle"> 
                 </td>
                 <td id="calculPriceLine" class="text-center align-middle">${total}€</td>
             </tr>`;

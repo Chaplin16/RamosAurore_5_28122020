@@ -25,11 +25,11 @@ function showProduct(product) {
                 </figure>
                 </a>    
                 <p class="text-right font-weight-bold">Prix:${product.price / 100}€</p>
-                <img src="star-solid.jpg"/>
-                <img src="star-solid.jpg"/>
-                <img src="star-solid.jpg"/>
-                <img src="star-solid.jpg"/>
-                <img src="star-solid.jpg"/>
+                <img src="img/star-solid.jpg"/>
+                <img src="img/star-solid.jpg"/>
+                <img src="img/star-solid.jpg"/>
+                <img src="img/star-solid.jpg"/>
+                <img src="img/star-solid.jpg"/>
                 
                 <input type="submit" id="btnListProduct" type="button" onclick="window.location.href ='${url}';" class="float-right mb-4 btn btn-warning font-weight-bold border-dark" data-id="${product.id}" data-image="${product.imageUrl}" data-name="${product.name}" data-price="${product.price /100}" value="Plus de détails"/>
 

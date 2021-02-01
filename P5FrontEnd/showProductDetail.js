@@ -54,11 +54,11 @@ fetch("http://localhost:3000/api/teddies/" + id)
                         <option value="10">10</option>
                     </select>
                 </form>
-                <img src="star-solid.jpg"/>
-                <img src="star-solid.jpg"/>
-                <img src="star-solid.jpg"/>
-                <img src="star-solid.jpg"/>
-                <img src="star-solid.jpg"/> 
+                <img src="img/star-solid.jpg"/>
+                <img src="img/star-solid.jpg"/>
+                <img src="img/star-solid.jpg"/>
+                <img src="img/star-solid.jpg"/>
+                <img src="img/star-solid.jpg"/> 
                 <input type="submit" id="addToCart" class="float-right mb-4 btn btn-warning font-weight-bold border-dark" value="Commander" data-image="${showTeddy.imageUrl}" data-id="${showTeddy._id}" data-name="${showTeddy.name}" data-price="${showTeddy.price / 100}"></>
             </div>
         </section>`;
