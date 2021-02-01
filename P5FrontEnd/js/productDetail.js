@@ -20,14 +20,14 @@ fetch("http://localhost:3000/api/teddies/" + id)
 
         // je recupere les infos precis du nounours (nom, image, prix, description )
         containerProductDetail.innerHTML +=
-            `<section class="flex row justify-content-center mt-3 mb-3">
-            <div class="col-5 border card border-warning border-right-0">                    
+            `<section class="flex flex-wrap text-center row mr-4 ml-4">
+            <div class="row-sm-12 mt-4 col-md-6 mb-md-4  border card border-warning border-right-0">                    
                 <figure id="figure">
                    <p id="erreur"></p>
                    <img src=${showTeddy.imageUrl} class="img-fluid rounded align-items-center mt-3" alt="ours en peluche">
                 </figure>
             </div>  
-            <div id="card-body" class=" col-5 border border-warning  border-left-0 flex flex-col flex-wrap bg-light">
+            <div id="card-body" class="row-sm-12 col-md-6 mt-md-4 mb-4 pr-4 pl-4 border border-warning  border-left-0 flex flex-col flex-wrap bg-light">
                 <h2 class="card-title text-center font-weight-bold mt-4">${showTeddy.name}</h2>    
                <figcaption>
                    <p class="card-text text-center">${showTeddy.description}</p>
@@ -38,8 +38,8 @@ fetch("http://localhost:3000/api/teddies/" + id)
              
                       </div>  
                 </div>    
-                <p class="text-right font-weight-bold">Prix:${showTeddy.price / 100}€</p>
-                <form class="text-right">
+                <p class="text-right font-weight-bold mt-3">Prix:${showTeddy.price / 100}€</p>
+                <form class="text-right mb-1">
                     <label>Quantité</label>
                     <select id="quantity" name="quantite">
                         <option value="1">1</option>
@@ -54,12 +54,15 @@ fetch("http://localhost:3000/api/teddies/" + id)
                         <option value="10">10</option>
                     </select>
                 </form>
-                <img src="img/star-solid.jpg"/>
-                <img src="img/star-solid.jpg"/>
-                <img src="img/star-solid.jpg"/>
-                <img src="img/star-solid.jpg"/>
-                <img src="img/star-solid.jpg"/> 
-                <input type="submit" id="addToCart" class="float-right mb-4 btn btn-warning font-weight-bold border-dark" value="Commander" data-image="${showTeddy.imageUrl}" data-id="${showTeddy._id}" data-name="${showTeddy.name}" data-price="${showTeddy.price / 100}"></>
+                <p class="mb-5 text-left">
+                    <img src="img/star-solid.jpg"/>
+                    <img src="img/star-solid.jpg"/>
+                    <img src="img/star-solid.jpg"/>
+                    <img src="img/star-solid.jpg"/>
+                    <img src="img/star-solid.jpg"/> 
+              
+                <input type="submit" id="addToCart" class="float-right mt-0 btn btn-warning font-weight-bold border-dark" value="Commander" data-image="${showTeddy.imageUrl}" data-id="${showTeddy._id}" data-name="${showTeddy.name}" data-price="${showTeddy.price / 100}"></>
+                  </p>
             </div>
         </section>`;
 
