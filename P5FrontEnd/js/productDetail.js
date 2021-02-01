@@ -20,14 +20,13 @@ fetch("http://localhost:3000/api/teddies/" + id)
 
         // je recupere les infos precis du nounours (nom, image, prix, description )
         containerProductDetail.innerHTML +=
-            `<section class="flex flex-wrap text-center row mr-4 ml-4">
-            <div class="row-sm-12 mt-4 col-md-6 mb-md-4  border card border-warning border-right-0">                    
+            `<section class="flex flex-wrap text-center row mr-2 ml-2">
+            <div class="row-sm-12 mt-4 col-md-6 col-md-offset-3 mb-md-4 border card border-warning border-right-0">                    
                 <figure id="figure">
-                   <p id="erreur"></p>
                    <img src=${showTeddy.imageUrl} class="img-fluid rounded align-items-center mt-3" alt="ours en peluche">
                 </figure>
             </div>  
-            <div id="card-body" class="row-sm-12 col-md-6 mt-md-4 mb-4 pr-4 pl-4 border border-warning  border-left-0 flex flex-col flex-wrap bg-light">
+            <div id="card-body" class="row-sm-12 col-md-6 col-md-offset-3 mt-md-4 mb-4 pr-4 pl-4 border border-warning  border-left-0 flex flex-col flex-wrap bg-light">
                 <h2 class="card-title text-center font-weight-bold mt-4">${showTeddy.name}</h2>    
                <figcaption>
                    <p class="card-text text-center">${showTeddy.description}</p>

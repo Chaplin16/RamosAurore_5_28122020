@@ -12,9 +12,11 @@
 <body>
     <!--header-->
     <header >
-
-            <img class="img-thumbnail img-fluid d-block mx-auto" src="img/teddyTravel.jpg" alt="image de fond d ecran d une peluche">
-
+        <div class="container-fluid text-center bg-info ">
+            <figure class="figure w-50 text-center border border-warning">
+                <img class="img-thumbnail img-fluid" src="img/teddyTravel.jpg" alt="image en fond d ecran d une peluche">
+            </figure>
+        </div>    
     </header>
     
     <main class="container-fluid bg-secondary">
@@ -26,17 +28,26 @@
             Elle sera expédiée très rapidement<br>
             pour un montant total de
             <p class="text-center font-weight-bold lead" id=priceOrder></p>    
-            <p class="text-center mt-5 lead font-weight-bold">Merci d'avoir effectué vos achats chez ORINOCO</p>
+            <p class="text-center mt-3 lead font-weight-bold">Merci d'avoir effectué vos achats chez ORINOCO</p>
             </P>
             <p class="mt-2 text-center font-weight-bold">
                 Voici votre numéro de commande: 
             </p>
             <p class="text-center font-weight-bold lead" id="numberOrder"></p>
             <div class="text-center">
-                <button type="submit" class="btn btn-warning border-dark align-items-center font-weight-bold mt-5 mb-5" onclick="window.location.href='index.html';">Retour à la page d'accueil</button>
+                <button type="submit" class="btn btn-warning border-dark align-items-center font-weight-bold mt-2 mb-4" onclick="window.location.href='index.html';">Retour à la page d'accueil</button>
             </div>
         </section>
     </main>
+    <footer class="row bg-info">
+        <div class="col">
+            <ul class="list-inline text-center my-4 ">
+                <li class="list-inline-item"><a href="#" class="text-warning font-weight-bold">À propos</a></li>
+                <li class="list-inline-item"><a href="#" class="text-warning font-weight-bold">Vie privée</a></li>
+                <li class="list-inline-item"><a href="#" class="text-warning font-weight-bold">Conditions d'utilisations</a></li>
+              </ul> 
+        </div>
+    </footer>
 
     <script src="js/config.js"></script>
     <script src="js/confirmation.js"></script>

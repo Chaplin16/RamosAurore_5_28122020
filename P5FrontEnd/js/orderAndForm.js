@@ -53,28 +53,31 @@ function rowTable() {
     // le html d'une ligne de commande
         cartTableBody.innerHTML += `
             <tr class="bg-white">
-                <td><img class= "img-rounded" src="${product.imageUrl}" width="90"</td>
-                <td class="align-middle">${product.firstName}</td>
-                <td class="text-left pl-5 align-middle">${product.price}€</td>
+                <td class="d-none d-md-block">
+                    <img class="d-none d-md-block ml-lg-5 img-rounded" src="${product.imageUrl}" width="90"
+                </td>
+                <td class="align-middle pr-0 ml-1">${product.firstName}</td>
+                <td class="text-left pl-4 align-middle">${product.price}€</td>
                 <td class="align-middle">${product.color}</td>
                 <td class="quantity text-left pl-5 align-middle" data-id="${product.idItem}">${product.quantity}</td>
-                <td>       
-                <img data-id="${product.idItem}" role= "button" class="trash ml-4 h-75 mt-2" src="img/trash-can_38501.png" alt="image d'une poubelle"> 
                 </td>
                 <td id="calculPriceLine" class="text-center align-middle">${total}€</td>
+                <td>       
+                <img data-id="${product.idItem}" role= "button" class ="trash ml-4 h-75 mt-2 pl-0" src="img/trash-can_38501.png" alt="image d'une poubelle"> 
+                
             </tr>`;
     });
 
     // le html de la ligne des totaux
         cartTableBody.innerHTML +=
             `<tr class="bg-light">
-                <td class="font-weight-bold">Prix total</td>
-                <td></td>
-                <td></td>
+                <td class="font-weight-bold pl-lg-5">Prix total</td>
+                <td class="d-none d-md-block"></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td class="text-center font-weight-bold">${totalOrder}€</td>
+                <td></td>
             </tr>`;
 
   //nombre d 'articles du panier affiché dans les headers

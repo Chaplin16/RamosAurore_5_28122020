@@ -5,14 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="style.css">
     <title>orderProduct</title>
 </head>
 
 <body>
     <!--header-->
-    <header class="container-fluid bg-info">
-        <figure class="figure">
+    <header class="container-fluid text-center bg-info">
+        <figure class="figure w-50">
             <img class="img-fluid img-thumbnail " src="img/bg-teddyBear.jpg" alt="nounours">
         </figure>
         <div class="row">
@@ -23,27 +22,20 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div id="navbarContent" class="collapse navbar-collapse">
-                    <ul class="navbar-nav font-weight-bold w-100 justify-content-end">
-                        <li class="nav-item active">
-                            <a class="nav-link text-warning" href="index.html">Accueil</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link text-warning" href="#">Une question?</a>
-
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-warning" href="#">Panier</a>
-                            <img class="ml-3" src="img/cart_icon_128475.svg" alt="panier des achats" />
-                            <div class="dropdown">
-                                <div id="cart">
-                                    <p id="quantity-in-cart"></p>
-                                </div>
-
+                <ul class="navbar-nav font-weight-bold w-100 justify-content-end">
+                    <li class="nav-item active">
+                        <a class="nav-link text-warning" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-warning" href="#">Panier</a>
+                        <img class="ml-3" src="img/cart_icon_128475.svg" alt="panier des achats" />
+                        <div class="dropdown">
+                            <div id="cart">
+                                <p id="quantity-in-cart"></p>
                             </div>
-                        </li>
-                    </ul>
-                </div>
+                        </div>
+                    </li>
+                </ul>            
             </nav>
         </div>
     </header>
@@ -51,22 +43,23 @@
     <!--main-->
     <main class="bg-secondary">
         <!--le panier-->
-        <div class="containerOrder pt-3 ml-3 mr-3 ">
+        <div class="containerOrder p-3 ml-md-3 mr-md-3 ml-lg-5 mr-lg-5">
             <h4 class="font-weight-bold pl-3">Aperçu de votre panier</h4>
-            <div class="table_box_panier mt-4 ml-5 mr-5 ">
+            <div class="table_box_panier mt-4 ml-md-5 mr-md-5 ">
                 <!--contient le tableau-->
                 <!--le tableau-->
                 <table class="table border">
                     <!--entete tableau-->
-                    <thead class="table-striped  bg-warning  ">
+                    <thead class=" bg-warning  ">
                         <tr class="">
-                            <th ></th>
-                            <th>Articles</th>
-                            <th>Prix unitaire</th>
-                            <th class="pr-4">Couleur</th>
+                            <th class="d-none d-md-block border-warning"></th>
+                            <th class="pl-1">Articles</th>
+                            <th class="pr-0">Prix unitaire</th>
+                            <th class="pr-0">Couleur</th>
                             <th>Quantité</th>
-                            <th>Supprimer</th>
+                            
                             <th class="text-center">Prix Total</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody id="cart-tablebody">
@@ -78,7 +71,7 @@
         <!--fin du panier-->
 
         <!--formulaire de contact-->
-        <div class="containerForm pl-3 pt-5">
+        <div class="containerForm ml-3 pt-5">
             <h4 class="font-weight-bold pl-3">Formulaire de contact</h4>
             <form action="http://localhost:3000/api/teddies/order" method="post" name="myForm" class="row g-3 mt-3 ml-4 mr-5 was-validated" novalidate>
 
@@ -117,7 +110,7 @@
 
                     </div>
                 </div>
-                <div class="col-12 mt-3">
+                <div class="col-12 mt-3 container">
            <input type="submit"id="btnSubmit" class="btn btn-warning border-dark font-weight-bold mb-4 ml-1" name="submit" value="Envoyer"></button>
                 </div>
             </form>
