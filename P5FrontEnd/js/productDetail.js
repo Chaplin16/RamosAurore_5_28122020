@@ -8,7 +8,17 @@ const urlParams = new URL(document.location).searchParams;
 const id = urlParams.get("id");
 
 // je cree ma variable d options de couleurs 
-let stringOptionColor = "";
+let stringOptionColor = "";  
+function showColor() {
+ // variable de la fiche produit où je veux rajouter les options de couleurs
+    let choise = document.getElementById("choise");
+// rajout des options de couleurs dans cette variable 
+    choise.innerHTML +=
+        `<label class="form-check-label pb-1">
+        Choississez votre couleur: 
+            </label><br>
+            <select id="clr" name="color">${stringOptionColor}</select>`;
+}
 
 //j envoi une requete avec l'url precis(id) du nounours
 fetch("http://localhost:3000/api/teddies/" + id)
@@ -19,7 +29,6 @@ fetch("http://localhost:3000/api/teddies/" + id)
     //je cree une fonction pour recuperer les donnees de cette url
     .then(function (showTeddy) {
 
-        // je recupere les infos precis du nounours (nom, image, prix, description )
         containerProductDetail.innerHTML +=
             `<section class="flex flex-wrap text-center row mr-4 ml-4">
             <div class="row-sm-12 mt-4 col-md-6 mb-md-4  border card border-warning border-right-0">                    
@@ -61,9 +70,8 @@ fetch("http://localhost:3000/api/teddies/" + id)
                     <img src="img/star-solid.jpg"/>
                     <img src="img/star-solid.jpg"/>
                     <img src="img/star-solid.jpg"/> 
-              
-                <input type="submit" id="addToCart" class="float-right mt-0 btn btn-warning font-weight-bold border-dark" value="Commander" data-image="${showTeddy.imageUrl}" data-id="${showTeddy._id}" data-name="${showTeddy.name}" data-price="${showTeddy.price / 100}"></>
-                  </p>
+                    <input type="submit" id="addToCart" class="float-right mt-0 btn btn-warning font-weight-bold border-dark" value="Commander" data-image="${showTeddy.imageUrl}" data-id="${showTeddy._id}" data-name="${showTeddy.name}" data-price="${showTeddy.price / 100}"></>
+                </p>
             </div>
         </section>`;
 
@@ -72,61 +80,41 @@ fetch("http://localhost:3000/api/teddies/" + id)
         for (let color of showTeddy.colors) {
             stringOptionColor += `<option value="${color}">${color}</option>`
         }
-        // variable de la fiche produit où je veux rajouter les options de couleurs
-        let choise = document.getElementById("choise");
-        // rajout des options de couleurs dans cette variable 
-        choise.innerHTML +=
-            `<label class="form-check-label pb-1">
-        Choississez votre couleur: 
-            </label><br>
-            <select id="clr" name="color">
-            ${stringOptionColor}</select>`;
+        showColor();
         // je cree une variable avec la premiere couleur selectionnée
         let color = showTeddy.colors[0];
-        // ecouteur d evenement pour recuperer la couleur selectionnée par l'utilisateur
+        // ecouteur d evenement pour recuperer la couleur 
         choise.addEventListener("input", function (event) {
             color = event.target.value;
             alert('la couleur ' + event.target.value + ' a été selectionnée');
         });
 
-        //AFFICHER LA QUANTITE DE PRODUIT A ACHETER DANS LE PANIER
         //variable de l endroit où je recupere les quantités
         let quantity = document.getElementById("quantity");
-        let quantityInCart = document.getElementById("quantity-in-cart"); 
+        calculQuantity();
 
-        totalQuantity = localStorage.getItem("totalQuantity");    
-        if (totalQuantity != null) {
-            quantityInCart.innerHTML = `<span>${totalQuantity}</span> articles`;
-        } else {
-            quantityInCart.innerHTML =`0 article`
-        } 
-
-        //RECUPERER LES INFOS DU BOUTON
-
-        let btnAddToCart = document.getElementById("addToCart");
-        let imageUrl = btnAddToCart.dataset.image;
-        let idItem = btnAddToCart.dataset.id;
-        let price = btnAddToCart.dataset.price;
-        let firstName = btnAddToCart.dataset.name;
-
-        //ENREGISTREMENT DES INFOS DANS LOCAL STORAGE AU CLICK DE L UTILISATEUR   
+//RECUPERER LES INFOS DU BOUTON
+        let btnAddToCart = document.getElementById("addToCart");        
         btnAddToCart.addEventListener('click', function () {
-            //je cree un objet avec toutes ces propriétés
             let basket = {
-                idItem: idItem,
-                imageUrl: imageUrl,
-                price: price,
-                firstName: firstName,
-                quantity: quantity.value,
-                color: color
-            }
+            imageUrl: btnAddToCart.dataset.image,
+            idItem: btnAddToCart.dataset.id,
+            price: btnAddToCart.dataset.price,
+            firstName: btnAddToCart.dataset.name,   
+            quantity: quantity.value,
+            color: color
+          }
             addBasket(basket);
             window.location.assign('orderAndForm.html')
         })
-   
+
+    })
 //le retour en cas de non connection au serveur 
     .catch(function (err) {
-        console.log('URL problem: ' + err.message);
-    });   
+        console.log('probleme dans la page de showProduct: ' + err.message); 
+    });
 
- });   
+ 
+
+     
+

@@ -21,7 +21,7 @@ let trash = document.getElementsByClassName("trash");
 for (let btn of trash) {
     btn.addEventListener('click', function () {
         let idItem = this.dataset.id;
-        remove({ idItem: idItem });
+        removeBasket({ idItem: idItem });
         let quantityToUpdate= document.querySelector(`td.quantity[data-id="${idItem}"]`);
         if (quantityToUpdate.innerHTML > 1){
             quantityToUpdate.innerHTML = parseInt(quantityToUpdate.innerHTML) - 1;
@@ -80,13 +80,7 @@ function rowTable() {
   //nombre d 'articles du panier affiché dans les headers
     localStorage.setItem("totalQuantity", totalQuantity);
     localStorage.setItem("totalOrder", totalOrder);
-
-    if (totalQuantity != null) {
-        quantityInCart.innerHTML = `<span>${totalQuantity}</span> articles`;
-    } else {
-        quantityInCart.innerHTML =`0 article`
-    }
-    
+    calculQuantity();   
 };
 
 ////////////////////////////////////////////////////////

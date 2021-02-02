@@ -7,6 +7,7 @@ function initBasket() {
         return [];
     }
 };
+
 function addBasket(product) {
     let basket = initBasket();
     let productFind = basket.find(basketProduct => basketProduct.idItem == product.idItem);
@@ -19,7 +20,7 @@ function addBasket(product) {
     localStorage.setItem("basket", JSON.stringify(basket));
 };
 
-function remove(product) {
+function removeBasket(product) {
     let basket = initBasket();
     let productFind = basket.find(basketProduct => basketProduct.idItem == product.idItem);
 
@@ -29,6 +30,5 @@ function remove(product) {
         basket = basket.filter(basketProduct => basketProduct.idItem != product.idItem);
     }
     localStorage.setItem("basket", JSON.stringify(basket));
-
 }
 
