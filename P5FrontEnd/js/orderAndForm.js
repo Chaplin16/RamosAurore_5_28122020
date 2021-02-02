@@ -78,29 +78,36 @@ function rowTable() {
             </tr>`;
 
   //nombre d 'articles du panier affiché dans les headers
-    quantityInCart.innerHTML = `<span>${totalQuantity}</span> articles`;
-    localStorage.setItem("qtt", totalQuantity);
+    localStorage.setItem("totalQuantity", totalQuantity);
     localStorage.setItem("totalOrder", totalOrder);
+
+    if (totalQuantity != null) {
+        quantityInCart.innerHTML = `<span>${totalQuantity}</span> articles`;
+    } else {
+        quantityInCart.innerHTML =`0 article`
+    }
+    
 };
 
-
 ////////////////////////////////////////////////////////
+
 //function pour verifier si le panier contient des articles
 function basketIsRight() {  
-if(basket.length < 0 || basket == null) {
-        alert("Il n'y a pas d'article dans votre panier!");
-        return false
-    }else {
-        console.log("le panier n'est pas vide");
-        return true
+    if(basket.length < 0 || basket == null) {
+            alert("Il n'y a pas d'article dans votre panier!");
+            return false
+        }else {
+            console.log("le panier n'est pas vide");
+            return true
+        }
     }
-}
-
+            
 //je recupere l'emplacement du bouton
 let btnSubmit = document.getElementById("btnSubmit");
  
 //je cree le onclick sur le bouton
 btnSubmit.addEventListener("click", function (event) {
+    document.getElementById("form").reportValidity();
     event.preventDefault();
 //verification du panier 
     if(basketIsRight() == true) {  
@@ -117,15 +124,14 @@ btnSubmit.addEventListener("click", function (event) {
         for(let i = 0; i < basket.length; i++){
             products.push(basket[i].idItem);
         }  
-console.log(contact)
-console.log(products)
+
 //je cree un objet avec les donnees du formulaire et le tableau 
 //je fais une chaine de caractere
         let sendInfo = JSON.stringify({
             contact,
             products, 
         });
-console.log(sendInfo)
+
 //j'envoie des donnees au serveur    
         fetch("http://localhost:3000/api/teddies/order", {
             method: "post",
@@ -138,12 +144,15 @@ console.log(sendInfo)
             })  
             .then(function(data) {
 //j enregistre la commande
-                // localStorage.setItem('user', JSON.stringify(data.contact.lastName))
-                // localStorage.setItem('order', JSON.stringify(data.orderId));
-                let user = JSON.stringify(data.contact.lastName);
-                let orderId = JSON.stringify(data.orderId);
+
+                let user = data.contact.lastName;
+                let orderId = data.orderId;
 //ouverture de la page de confirmation
 	       		window.location.assign("confirmation.html?orderId="+orderId+"&user="+user)
+            })
+            //le retour en cas de non connection au serveur 
+            .catch(function(err) {
+            console.log('Retour info Api problem: ' + err.message);
             })
         
     } else {

@@ -80,40 +80,37 @@
         <!--formulaire de contact-->
         <div class="containerForm pl-3 pt-5">
             <h4 class="font-weight-bold pl-3">Formulaire de contact</h4>
-            <form action="http://localhost:3000/api/teddies/order" method="post" name="myForm" class="row g-3 mt-3 ml-4 mr-5 was-validated" novalidate>
+            <form action="http://localhost:3000/api/teddies/order" method="post" name="myForm" class="row g-3 mt-3 ml-4 mr-5" id="form">
 
                 <div class="col-md-6">
                     <label for="name" class="form-label font-weight-bold">Nom</label>
-                    <input type="text" pattern ="[A-zéèêëï]{2,30}" class="form-control" id="userName" name="userName">
-                </div>
+                    <input type="text" pattern ="[A-zéèêëï]{2,30}" class="form-control" id="userName" name="userName" title="Veuillez n'écrire que des lettres" required>
+                </div> 
 
                 <div class="col-md-6">
                     <label for="lastName" class="form-label font-weight-bold">Prenom</label>
-                    <input type="text" pattern ="[A-zéèêëîï]{2,30}" class="form-control" id="userLastName" name="userLastName">
+                    <input type="text" pattern ="[A-zéèêëîï]{2,30}" class="form-control" id="userLastName" name="userLastName" title="Veuillez n'écrire que des lettres" required>
                 </div>
 
                 <div class="col-md-6">
                     <label for="email" class="form-label font-weight-bold">Email</label>
-                    <input type="email" pattern="[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})" class="form-control" id="userEmail" placeholder="mail@turquoise.fr" name="userEmail">
+                    <input type="email" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" class="form-control" id="userEmail" placeholder="mail@turquoise.fr" name="userEmail" title="Veuillez écrire un mail valide" required>
                 </div>
 
                 <div class="col-12">
                     <label for="address" class="form-label font-weight-bold">Adresse</label>
-                    <input type="text" class="form-control" id="userAdress" placeholder=" 123 rue du lac enchanté" name="userAdress">
+                    <input type="text" pattern="[A-z0-9-_çàâéèeîï \']{ ,100}" class="form-control" id="userAdress" placeholder=" 123 rue du lac enchanté" name="userAdress" title="Veuillez écrire une adresse valide" required>
                 </div>
                 <div class="col-md-6">
                     <label for="city" class="form-label font-weight-bold">Ville</label>
-                    <input type="text" pattern ="[A-zéèêëîï]{2,40}" class="form-control" id="userCity" name="userCity">
+                    <input type="text" pattern ="[A-zéèêëîï]{2,40}" class="form-control" id="userCity" name="userCity" title="Veuillez écrire un email valide" required>
                 </div>
                 <div class="form-group ml-3 pt-5">
                     <div class="form-check" id="cgu">
-                        <input class="form-check-input" type="checkbox" value="no" name="cgu" required>
+                        <input class="check-control" type="checkbox" value="no" name="cgu" required>
                         <label class="form-check-label font-weight-bold" for="cgu" >
                             J'accepte les conditions générales de vente
                         </label>
-                        <div class="invalid-feedback">
-                            Vous devez accepter les CGU pour continuer
-                        </div>
 
                     </div>
                 </div>

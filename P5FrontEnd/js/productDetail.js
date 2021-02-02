@@ -1,13 +1,14 @@
 //creation des variables
 
-// variable (html placé dans la fiche produit)
+// variable de recuperation pour placer l'HTML dans le fichier JS
 let containerProductDetail = document.getElementById('containerProductDetail');
-
 
 //je recuperele le parametre (id) de la fin de l url
 const urlParams = new URL(document.location).searchParams;
 const id = urlParams.get("id");
 
+// je cree ma variable d options de couleurs 
+let stringOptionColor = "";
 
 //j envoi une requete avec l'url precis(id) du nounours
 fetch("http://localhost:3000/api/teddies/" + id)
@@ -67,9 +68,6 @@ fetch("http://localhost:3000/api/teddies/" + id)
         </section>`;
 
         //AFFICHER LES OPTIONS DE COULEURS        
-        // je cree ma variable d options de couleurs 
-        let stringOptionColor = "";
-
         // j utilise une boucle for pour notifier chaque couleur
         for (let color of showTeddy.colors) {
             stringOptionColor += `<option value="${color}">${color}</option>`
@@ -95,18 +93,21 @@ fetch("http://localhost:3000/api/teddies/" + id)
         //variable de l endroit où je recupere les quantités
         let quantity = document.getElementById("quantity");
         let quantityInCart = document.getElementById("quantity-in-cart"); 
-        let qtt = 0;
-        qtt = localStorage.getItem("qtt");
-        quantityInCart.innerHTML = `<span>${qtt}</span> articles`;     
-     
+
+        totalQuantity = localStorage.getItem("totalQuantity");    
+        if (totalQuantity != null) {
+            quantityInCart.innerHTML = `<span>${totalQuantity}</span> articles`;
+        } else {
+            quantityInCart.innerHTML =`0 article`
+        } 
 
         //RECUPERER LES INFOS DU BOUTON
+
         let btnAddToCart = document.getElementById("addToCart");
         let imageUrl = btnAddToCart.dataset.image;
         let idItem = btnAddToCart.dataset.id;
         let price = btnAddToCart.dataset.price;
         let firstName = btnAddToCart.dataset.name;
-
 
         //ENREGISTREMENT DES INFOS DANS LOCAL STORAGE AU CLICK DE L UTILISATEUR   
         btnAddToCart.addEventListener('click', function () {
@@ -121,6 +122,11 @@ fetch("http://localhost:3000/api/teddies/" + id)
             }
             addBasket(basket);
             window.location.assign('orderAndForm.html')
-
         })
+   
+//le retour en cas de non connection au serveur 
+    .catch(function (err) {
+        console.log('URL problem: ' + err.message);
     });   
+
+ });   

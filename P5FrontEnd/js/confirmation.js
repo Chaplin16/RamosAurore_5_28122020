@@ -12,16 +12,17 @@ let number = document.getElementById("numberOrder");
 //je récupere le numéro de commande
 let urlParams = new URL(document.location).searchParams;
 let orderId = urlParams.get("orderId");
-orderId = JSON.parse(orderId)
+
 number.innerHTML += `<span>${orderId}</span>`;
 
 // PRENOM
 //je recupere l emplacement du prénom 
 let contactName = document.getElementById("contactName");
+
 //je recupere le prenom du client
 
 let user = urlParams.get("user");
-user = JSON.parse(user);
+
 contactName.innerHTML += `<span>FELICITATIONS ${user}!!</span>`;
 
 //je supprime le panier 

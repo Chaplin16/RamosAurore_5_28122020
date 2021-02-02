@@ -1,6 +1,6 @@
 //creation des variables
 
-// variable où je placerai le html en js
+// variable de recuperation où je placerai le html dans le JS
 let containerProduct = document.getElementById('listProduct'); 
 
 //variable de l url de api avec choix du produit dans config.api
@@ -48,7 +48,7 @@ myFetch.then(function (response) {
         for (let product of listProductData) {
 // je lui cree teddy sur le modele du constructor TeddyBear
             let teddy = new TeddyBears(product);
-// j appelle ma fonction de la ligne 6 en lui passant en parametre teddy            
+// j appelle ma fonction  en lui passant en parametre teddy            
         showProduct(teddy);
         }
 
@@ -60,8 +60,12 @@ myFetch.then(function (response) {
 
 //j affiche la quantité d articles du panier de commande 
 let quantityInCart = document.getElementById("quantity-in-cart"); 
-let qtt = 0;
-qtt = localStorage.getItem("qtt");
-quantityInCart.innerHTML = `<span>${qtt}</span> articles`;     
+
+totalQuantity = localStorage.getItem("totalQuantity");    
+if (totalQuantity != null) {
+    quantityInCart.innerHTML = `<span>${totalQuantity}</span> articles`;
+} else {
+    quantityInCart.innerHTML =`0 article`
+}
 
 
