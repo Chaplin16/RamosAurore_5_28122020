@@ -138,11 +138,12 @@ console.log(sendInfo)
             })  
             .then(function(data) {
 //j enregistre la commande
-                localStorage.setItem('user', JSON.stringify(data.contact.lastName))
-                localStorage.setItem('order', JSON.stringify(data.orderId));
-    
+                // localStorage.setItem('user', JSON.stringify(data.contact.lastName))
+                // localStorage.setItem('order', JSON.stringify(data.orderId));
+                let user = JSON.stringify(data.contact.lastName);
+                let orderId = JSON.stringify(data.orderId);
 //ouverture de la page de confirmation
-	       		window.location.assign("confirmation.html");
+	       		window.location.assign("confirmation.html?orderId="+orderId+"&user="+user)
             })
         
     } else {
