@@ -60,12 +60,6 @@ myFetch.then(function (response) {
 
 //j affiche la quantité d articles du panier de commande 
 let quantityInCart = document.getElementById("quantity-in-cart"); 
-
-totalQuantity = localStorage.getItem("totalQuantity");    
-if (totalQuantity != null) {
-    quantityInCart.innerHTML = `<span>${totalQuantity}</span> articles`;
-} else {
-    quantityInCart.innerHTML =`0 article`
-}
+calculQuantity();
 
 
