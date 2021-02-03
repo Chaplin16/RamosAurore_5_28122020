@@ -20,6 +20,7 @@ function addBasket(product) {
     localStorage.setItem("basket", JSON.stringify(basket));
 };
 
+//function pour vider la ligne du panier ou seulement la quantite si le produit est existant dans le panier
 function removeBasket(product) {
     let basket = initBasket();
     let productFind = basket.find(basketProduct => basketProduct.idItem == product.idItem);
@@ -32,3 +33,13 @@ function removeBasket(product) {
     localStorage.setItem("basket", JSON.stringify(basket));
 }
 
+//function pour verifier si le panier contient des articles
+function basketIsRight() {  
+    if(basket.length < 0 || basket == null) {
+            alert("Il n'y a pas d'article dans votre panier!");
+            return false
+        }else {
+            console.log("le panier n'est pas vide");
+            return true
+        }
+}

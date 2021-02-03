@@ -9,6 +9,8 @@ const id = urlParams.get("id");
 
 // je cree ma variable d options de couleurs 
 let stringOptionColor = "";  
+
+//function pour afficher les options de couleurs
 function showColor() {
  // variable de la fiche produit où je veux rajouter les options de couleurs
     let choise = document.getElementById("choise");
@@ -20,26 +22,20 @@ function showColor() {
             <select id="clr" name="color">${stringOptionColor}</select>`;
 }
 
-//j envoi une requete avec l'url precis(id) du nounours
-fetch("http://localhost:3000/api/teddies/" + id)
-    //premiere promesse avec la reponse json
-    .then(function (response) {
-        return response.json()
-    })
-    //je cree une fonction pour recuperer les donnees de cette url
-    .then(function (showTeddy) {
-
+//fonction pour afficher la fiche produit detaillée
+function showCardTeddy(product){
+    
         containerProductDetail.innerHTML +=
             `<section class="flex flex-wrap text-center row mr-2 ml-2">
             <div class="row-sm-12 mt-4 col-md-6 col-md-offset-3 mb-md-4 border card border-warning border-right-0">                    
                 <figure id="figure">
-                   <img src=${showTeddy.imageUrl} class="img-fluid rounded align-items-center mt-3" alt="ours en peluche">
+                   <img src=${product.imageUrl} class="img-fluid rounded align-items-center mt-3" alt="ours en peluche">
                 </figure>
             </div>  
             <div id="card-body" class="row-sm-12 col-md-6 col-md-offset-3 mt-md-4 mb-4 pr-4 pl-4 border border-warning  border-left-0 flex flex-col flex-wrap bg-light">
-                <h2 class="card-title text-center font-weight-bold mt-4">${showTeddy.name}</h2>    
+                <h2 class="card-title text-center font-weight-bold mt-4">${product.name}</h2>    
                <figcaption>
-                   <p class="card-text text-center">${showTeddy.description}</p>
+                   <p class="card-text text-center">${product.description}</p>
                 </figcaption>  
                 <div class="form">
                     <p class="lead font-weight-bold mt-4 mb-2">Si vous voulez me personnaliser</p>
@@ -47,7 +43,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
              
                       </div>  
                 </div>    
-                <p class="text-right font-weight-bold mt-3">Prix:${showTeddy.price / 100}€</p>
+                <p class="text-right font-weight-bold mt-3">Prix:${product.price / 100}€</p>
                 <form class="text-right mb-1">
                     <label>Quantité</label>
                     <select id="quantity" name="quantite">
@@ -69,17 +65,30 @@ fetch("http://localhost:3000/api/teddies/" + id)
                     <img src="img/star-solid.jpg"/>
                     <img src="img/star-solid.jpg"/>
                     <img src="img/star-solid.jpg"/> 
-                    <input type="submit" id="addToCart" class="float-right mt-0 btn btn-warning font-weight-bold border-dark" value="Commander" data-image="${showTeddy.imageUrl}" data-id="${showTeddy._id}" data-name="${showTeddy.name}" data-price="${showTeddy.price / 100}"></>
+                    <input type="submit" id="addToCart" class="float-right mt-0 btn btn-warning font-weight-bold border-dark" value="Commander" data-image="${product.imageUrl}" data-id="${product._id}" data-name="${product.name}" data-price="${product.price / 100}"></>
                 </p>
             </div>
         </section>`;
 
-        //AFFICHER LES OPTIONS DE COULEURS        
+}
+
+//j envoi une requete avec l'url precis(id) du nounours
+fetch("http://localhost:3000/api/teddies/" + id)
+    //premiere promesse avec la reponse json
+    .then(function (response) {
+        return response.json()
+    })
+
+    .then(function (showTeddy) {
+        //je rappelle la fonction pour afficher chaque carte detaillée
+        showCardTeddy(showTeddy);
+      
         // j utilise une boucle for pour notifier chaque couleur
         for (let color of showTeddy.colors) {
             stringOptionColor += `<option value="${color}">${color}</option>`
         }
         showColor();
+
         // je cree une variable avec la premiere couleur selectionnée
         let color = showTeddy.colors[0];
         // ecouteur d evenement pour recuperer la couleur 
