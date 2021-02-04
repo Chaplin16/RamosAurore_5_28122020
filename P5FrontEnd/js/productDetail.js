@@ -65,7 +65,7 @@ function displayCardTeddy(product) {
                         <img src="img/star-solid.jpg" alt="etoile"/>
                         <img src="img/star-solid.jpg" alt="etoile"/>
                         <img src="img/star-solid.jpg" alt="etoile"/> 
-                        <input type="submit" id="addToCart" class="float-right mt-0 btn btn-warning font-weight-bold border-dark" value="Commander" data-image="${product.imageUrl}" data-id="${product._id}" data-name="${product.name}" data-price="${product.price / 100}"></>
+                        <input type="submit" id="addToCart" class="float-right mt-0 btn btn-warning font-weight-bold border-dark" value="Commander" data-image="${product.imageUrl}" data-toggle="modal" data-target="#windowChoice" data-id="${product._id}" data-name="${product.name}" data-price="${product.price / 100}"></>
                         </p>
                         </div>
                         <div class="modal" tabindex="-1" id="yourChoice">   
@@ -75,28 +75,6 @@ function displayCardTeddy(product) {
                     
 
        
-function select(){
-    let yourChoice = document.getElementById("yourChoice");   
-
-        yourChoice.innerHTML += `<div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Confirmation</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <div class="modal-body">
-                <p>Votre peluche a bien été ajouté au panier</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Poursuivre vos achats</button>
-                <button type="button" class="btn btn-primary">Commander</button>
-            </div>
-            </div>
-        </div>`
-
- }
 
 //j envoi une requete avec l'url precis(id) du nounours
 fetch("http://localhost:3000/api/teddies/" + id)
@@ -130,10 +108,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
         //RECUPERER LES INFOS DU BOUTON
         let btnAddToCart = document.getElementById("addToCart");
         btnAddToCart.addEventListener('click', function () {
-        select()
- 
        
-
             let basket = {
                 imageUrl: btnAddToCart.dataset.image,
                 idItem: btnAddToCart.dataset.id,
@@ -144,7 +119,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
             }
             //je recupere ma function pour creer les lignes de commande
             addBasket(basket);
-            window.location.assign('orderAndForm.html')
+            
         })
 
     })

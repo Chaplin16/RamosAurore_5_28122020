@@ -12,7 +12,7 @@ function showProduct(product) {
     let url = "productDetail.html?id=" + product.id
     // je rajoute le HTML dans le js avec les variables de toutes les propriétés
     containerProduct.innerHTML += 
-    `<div class="col-10 col-offset-1 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+    `<div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
     <div class="card border-warning border-5 m-3">
         <div class="card-body ">
             <h2 class="card-title">${product.name}</h2>    
