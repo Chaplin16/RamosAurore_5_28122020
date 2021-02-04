@@ -16,9 +16,7 @@
         </figure>
         <div class="row">
             <nav class="col navbar navbar-expand navbar-dark">
-                <h1>
-                    <img class="navbar-brand img-fluid" src="img/logoOrinoco.png" width="150"></img>
-                </h1>
+                <h1><img class="navbar-brand img-fluid" src="img/logoOrinoco.png" width="150" alt="logo d'Onorico"></img></h1>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -76,31 +74,31 @@
             <form action="http://localhost:3000/api/teddies/order" method="post" name="myForm" class="row g-3 mt-3 ml-4 mr-5" id="form">
 
                 <div class="col-md-6">
-                    <label for="name" class="form-label font-weight-bold">Nom</label>
+                    <label for="userName" class="form-label font-weight-bold">Nom</label>
                     <input type="text" pattern ="[A-zéèêëï]{2,30}" class="form-control" id="userName" name="userName" title="Veuillez n'écrire que des lettres" required>
                 </div> 
 
                 <div class="col-md-6">
-                    <label for="lastName" class="form-label font-weight-bold">Prenom</label>
+                    <label for="userLastName" class="form-label font-weight-bold">Prenom</label>
                     <input type="text" pattern ="[A-zéèêëîï]{2,30}" class="form-control" id="userLastName" name="userLastName" title="Veuillez n'écrire que des lettres" required>
                 </div>
 
                 <div class="col-md-6">
-                    <label for="email" class="form-label font-weight-bold">Email</label>
-                    <input type="email" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" class="form-control" id="userEmail" placeholder="mail@turquoise.fr" name="userEmail" title="Veuillez écrire un mail valide" required>
+                    <label for="userEmail" class="form-label font-weight-bold">Email</label>
+                    <input type="email" class="form-control" id="userEmail" placeholder="mail@turquoise.fr" name="userEmail" title="Veuillez écrire un mail valide" required>
                 </div>
 
                 <div class="col-12">
-                    <label for="address" class="form-label font-weight-bold">Adresse</label>
-                    <input type="text" pattern="[A-z0-9-_çàâéèeîï \']{ ,100}" class="form-control" id="userAdress" placeholder=" 123 rue du lac enchanté" name="userAdress" title="Veuillez écrire une adresse valide" required>
+                    <label for="userAdress" class="form-label font-weight-bold">Adresse</label>
+                    <input type="text" pattern="[A-z0-9-_çàâéèeîï \']{1,100}" class="form-control" id="userAdress" placeholder=" 123 rue du lac enchanté" name="userAdress" title="Veuillez écrire une adresse valide" required>
                 </div>
                 <div class="col-md-6">
-                    <label for="city" class="form-label font-weight-bold">Ville</label>
+                    <label for="userCity" class="form-label font-weight-bold">Ville</label>
                     <input type="text" pattern ="[A-zéèêëîï]{2,40}" class="form-control" id="userCity" name="userCity" title="Veuillez écrire un email valide" required>
                 </div>
                 <div class="form-group ml-3 pt-5">
-                    <div class="form-check" id="cgu">
-                        <input class="check-control" type="checkbox" value="no" name="cgu" required>
+                    <div class="form-check">
+                        <input class="check-control" type="checkbox" value="no" id="cgu" name="cgu" required>
                         <label class="form-check-label font-weight-bold" for="cgu" >
                             J'accepte les conditions générales de vente
                         </label>

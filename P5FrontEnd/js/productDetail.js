@@ -8,35 +8,35 @@ const urlParams = new URL(document.location).searchParams;
 const id = urlParams.get("id");
 
 // je cree ma variable d options de couleurs 
-let stringOptionColor = "";  
+let stringOptionColor = "";
 
 //function pour afficher les options de couleurs
-function showColor() {
- // variable de la fiche produit où je veux rajouter les options de couleurs
+function showColor(color) {
+    // variable de la fiche produit où je veux rajouter les options de couleurs
     let choise = document.getElementById("choise");
-// rajout des options de couleurs dans cette variable 
+    // rajout des options de couleurs dans cette variable 
     choise.innerHTML +=
         `<label class="form-check-label pb-1">
         Choississez votre couleur: 
             </label><br>
-            <select id="clr" name="color">${stringOptionColor}</select>`;
-}
+            <select id="clr" name="color">${color}</select>`;
 
+}
+        
 //fonction pour afficher la fiche produit detaillée
-function showCardTeddy(product){
-    
-        containerProductDetail.innerHTML +=
-            `<section class="flex flex-wrap text-center row mr-2 ml-2">
-            <div class="row-sm-12 mt-4 col-md-6 col-md-offset-3 mb-md-4 border card border-warning border-right-0">                    
+function displayCardTeddy(product) {
+    containerProductDetail.innerHTML +=
+        `<section class="flex flex-wrap text-center row mr-2 ml-2 justify-content-md-center">
+            <div class="row-sm-12 mt-4 col-md-6 col-lg-4  mb-md-4 border card border-warning border-right-0">                    
                 <figure id="figure">
                    <img src=${product.imageUrl} class="img-fluid rounded align-items-center mt-3" alt="ours en peluche">
                 </figure>
             </div>  
-            <div id="card-body" class="row-sm-12 col-md-6 col-md-offset-3 mt-md-4 mb-4 pr-4 pl-4 border border-warning  border-left-0 flex flex-col flex-wrap bg-light">
+            <div id="card-body" class="row-sm-12 col-md-6 mt-md-4 col-lg-4 mb-4 pr-4 pl-4 border border-warning  border-left-0 flex flex-col flex-wrap bg-light">
                 <h2 class="card-title text-center font-weight-bold mt-4">${product.name}</h2>    
-               <figcaption>
+               <figure>
                    <p class="card-text text-center">${product.description}</p>
-                </figcaption>  
+                </figure>  
                 <div class="form">
                     <p class="lead font-weight-bold mt-4 mb-2">Si vous voulez me personnaliser</p>
                       <div id="choise" class="form-check">
@@ -57,20 +57,46 @@ function showCardTeddy(product){
                         <option value="8">8</option>
                         <option value="9">9</option>
                         <option value="10">10</option>
-                    </select>
-                </form>
-                <p class="mb-5 text-left">
-                    <img src="img/star-solid.jpg"/>
-                    <img src="img/star-solid.jpg"/>
-                    <img src="img/star-solid.jpg"/>
-                    <img src="img/star-solid.jpg"/>
-                    <img src="img/star-solid.jpg"/> 
-                    <input type="submit" id="addToCart" class="float-right mt-0 btn btn-warning font-weight-bold border-dark" value="Commander" data-image="${product.imageUrl}" data-id="${product._id}" data-name="${product.name}" data-price="${product.price / 100}"></>
-                </p>
-            </div>
-        </section>`;
+                        </select>
+                        </form>
+                        <p class="mb-5 text-left">
+                        <img src="img/star-solid.jpg" alt="etoile"/>
+                        <img src="img/star-solid.jpg" alt="etoile"/>
+                        <img src="img/star-solid.jpg" alt="etoile"/>
+                        <img src="img/star-solid.jpg" alt="etoile"/>
+                        <img src="img/star-solid.jpg" alt="etoile"/> 
+                        <input type="submit" id="addToCart" class="float-right mt-0 btn btn-warning font-weight-bold border-dark" value="Commander" data-image="${product.imageUrl}" data-id="${product._id}" data-name="${product.name}" data-price="${product.price / 100}"></>
+                        </p>
+                        </div>
+                        <div class="modal" tabindex="-1" id="yourChoice">   
+                        </div>
+                        </section>`;
+                    }
+                    
 
-}
+       
+function select(){
+    let yourChoice = document.getElementById("yourChoice");   
+
+        yourChoice.innerHTML += `<div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Confirmation</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <div class="modal-body">
+                <p>Votre peluche a bien été ajouté au panier</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Poursuivre vos achats</button>
+                <button type="button" class="btn btn-primary">Commander</button>
+            </div>
+            </div>
+        </div>`
+
+ }
 
 //j envoi une requete avec l'url precis(id) du nounours
 fetch("http://localhost:3000/api/teddies/" + id)
@@ -81,13 +107,13 @@ fetch("http://localhost:3000/api/teddies/" + id)
 
     .then(function (showTeddy) {
         //je rappelle la fonction pour afficher chaque carte detaillée
-        showCardTeddy(showTeddy);
-      
+        displayCardTeddy(showTeddy);
+
         // j utilise une boucle for pour notifier chaque couleur
         for (let color of showTeddy.colors) {
             stringOptionColor += `<option value="${color}">${color}</option>`
         }
-        showColor();
+        showColor(stringOptionColor);
 
         // je cree une variable avec la premiere couleur selectionnée
         let color = showTeddy.colors[0];
@@ -101,28 +127,33 @@ fetch("http://localhost:3000/api/teddies/" + id)
         let quantity = document.getElementById("quantity");
         calculQuantity();
 
-//RECUPERER LES INFOS DU BOUTON
-        let btnAddToCart = document.getElementById("addToCart");        
+        //RECUPERER LES INFOS DU BOUTON
+        let btnAddToCart = document.getElementById("addToCart");
         btnAddToCart.addEventListener('click', function () {
+        select()
+ 
+       
+
             let basket = {
-            imageUrl: btnAddToCart.dataset.image,
-            idItem: btnAddToCart.dataset.id,
-            price: btnAddToCart.dataset.price,
-            firstName: btnAddToCart.dataset.name,   
-            quantity: quantity.value,
-            color: color
-          }
+                imageUrl: btnAddToCart.dataset.image,
+                idItem: btnAddToCart.dataset.id,
+                price: btnAddToCart.dataset.price,
+                firstName: btnAddToCart.dataset.name,
+                quantity: quantity.value,
+                color: color
+            }
+            //je recupere ma function pour creer les lignes de commande
             addBasket(basket);
             window.location.assign('orderAndForm.html')
         })
 
     })
-//le retour en cas de non connection au serveur 
+    //le retour en cas de non connection au serveur 
     .catch(function (err) {
-        console.log('probleme dans la page de showProduct: ' + err.message); 
+        console.log('probleme dans la page de showProduct: ' + err.message);
     });
 
- 
 
-     
+
+
 

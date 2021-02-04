@@ -20,10 +20,8 @@ number.innerHTML += `<span>${orderId}</span>`;
 let contactName = document.getElementById("contactName");
 
 //je recupere le prenom du client
-
 let user = urlParams.get("user");
-
 contactName.innerHTML += `<span>FELICITATIONS ${user}!!</span>`;
 
-//je supprime le panier 
+//je supprime le panier puisque la confirmation est retournée par l'API
 localStorage.clear(orderId);

@@ -35,7 +35,7 @@ function removeBasket(product) {
 
 //function pour verifier si le panier contient des articles
 function basketIsRight() {  
-    if(basket.length < 0 || basket == null) {
+    if(basket.length <= 0 || basket == null) {
             alert("Il n'y a pas d'article dans votre panier!");
             return false
         }else {

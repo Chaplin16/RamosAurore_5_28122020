@@ -2,7 +2,10 @@
 const basket = JSON.parse(localStorage.getItem("basket"));
 
 //je recupere le lieu d inplantation
+let trash = document.getElementsByClassName("trash");
 let cartTableBody = document.getElementById("cart-tablebody");
+
+//j affecte les variables
 cartTableBody.innerHTML = "";
 let totalQuantity = 0;
 let total = 0;
@@ -14,7 +17,7 @@ function displayOrderLines(product) {
     cartTableBody.innerHTML += `
         <tr class="bg-white">
             <td class="d-none d-md-block">
-                <img class="d-none d-md-block ml-lg-5 img-rounded" src="${product.imageUrl}" width="90"
+                <img class="d-none d-md-block ml-lg-5 img-rounded" src="${product.imageUrl}" width="90" alt="peluche"/>
             </td>
             <td class="align-middle pr-0 ml-1">${product.firstName}</td>
             <td class="text-left pl-4 align-middle">${product.price}€</td>
@@ -30,7 +33,9 @@ function displayOrderLines(product) {
 
 //function pour calculer les pric total de la ligne et la prix total de la comande 
 function calculPrice(product) {
+    //calcul la quantite par ligne
     total = product.price * product.quantity;
+    //calcul la quantite total 
     totalOrder += total
 }
 
@@ -40,9 +45,6 @@ if (basket) {
 } else {
     alert("le panier est vide")
 }
-
-// fonction pour supprimer une peluche   
-let trash = document.getElementsByClassName("trash");
 
 //j initialise le bouton de la poubelle sur la ligne de commande
 for (let btn of trash) {
@@ -63,7 +65,6 @@ for (let btn of trash) {
 
 //j affiche chaque ligne de commande 
 function rowTable() {
-
     basket.forEach((product) => {
         //j appelle la function pour calculer les prix
         calculPrice(product);
