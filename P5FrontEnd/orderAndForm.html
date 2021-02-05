@@ -10,17 +10,17 @@
 
 <body>
     <!--header-->
-    <header class="container-fluid text-center bg-info">
-        <figure class="figure w-50">
+    <header class="container-fluid text-center bg-secondary">
+        <figure class="figure w-75">
             <img class="img-fluid img-thumbnail " src="img/bg-teddyBear.jpg" alt="nounours">
         </figure>
         <div class="row">
             <nav class="col navbar navbar-expand navbar-dark">
-                <h1><img class="navbar-brand img-fluid" src="img/logoOrinoco.png" width="150" alt="logo d'Onorico"></img></h1>
+                <h1><img class="navbar-brand img-fluid" src="img/logoOrinoco.png" width="250" alt="logo d'Onorico"></img></h1>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <ul class="navbar-nav font-weight-bold w-100 justify-content-end">
+                <ul class="navbar-nav font-weight-bold w-100 justify-content-end lead">
                     <li class="nav-item active">
                         <a class="nav-link text-warning" href="index.html">Accueil</a>
                     </li>
@@ -39,9 +39,10 @@
     </header>
 
     <!--main-->
-    <main class="bg-secondary">
+    <main>
+        <div class="jumbotron w-100" style="background-image: url(img/plush3.jpg);">
         <!--le panier-->
-        <div class="containerOrder p-3 ml-md-3 mr-md-3 ml-lg-5 mr-lg-5">
+        <div class="containerOrder p-1 ml-md-3 mr-md-3 ml-lg-5 mr-lg-5">
             <h4 class="font-weight-bold pl-3">Aperçu de votre panier</h4>
             <div class="table_box_panier mt-4 ml-md-5 mr-md-5 ">
                 <!--contient le tableau-->
@@ -92,11 +93,11 @@
                     <label for="userAdress" class="form-label font-weight-bold">Adresse</label>
                     <input type="text" pattern="[A-z0-9-_çàâéèeîï \']{1,100}" class="form-control" id="userAdress" placeholder=" 123 rue du lac enchanté" name="userAdress" title="Veuillez écrire une adresse valide" required>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <label for="userCity" class="form-label font-weight-bold">Ville</label>
-                    <input type="text" pattern ="[A-zéèêëîï]{2,40}" class="form-control" id="userCity" name="userCity" title="Veuillez écrire un email valide" required>
+                    <input type="text" pattern ="[A-zéèêëîï]{2,40}" class="form-control" id="userCity" name="userCity" title="Veuillez écrire un nom de ville valide" required>
                 </div>
-                <div class="form-group ml-3 pt-5">
+                <div class="form-group col-12 pt-5">
                     <div class="form-check">
                         <input class="check-control" type="checkbox" value="no" id="cgu" name="cgu" required>
                         <label class="form-check-label font-weight-bold" for="cgu" >
@@ -117,7 +118,7 @@
     <!--fin du formulaire de contact"-->
 
     <!---Footer -->
-    <footer class="row bg-info">
+    <footer class="row">
         <div class="col">
             <ul class="list-inline text-center my-4 ">
                 <li class="list-inline-item"><a href="#" class="text-warning font-weight-bold">À propos</a></li>
