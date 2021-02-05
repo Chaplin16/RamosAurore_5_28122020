@@ -43,3 +43,4 @@ function basketIsRight() {
             return true
         }
 }
+

@@ -43,7 +43,7 @@ function calculPrice(product) {
 if (basket) {
     rowTable();
 } else {
-    alert("le panier est vide")
+   console.log("le panier est vide")
 }
 
 //j initialise le bouton de la poubelle sur la ligne de commande
@@ -89,6 +89,23 @@ function rowTable() {
     localStorage.setItem("totalOrder", totalOrder);
     calculQuantity();
 };
+
+let resetBasketAll = document.getElementById("resetBasketAll");
+resetBasketAll.addEventListener('click', function() {
+    if(basket == null) {
+        alert("votre panier ne contient pas d'article");
+    } else {
+        if(confirm("attention, vous êtes sur le point de vider totalement votre panier!")) {        
+            cartTableBody.remove()
+            localStorage.clear(basket); 
+            window.location.reload(); 
+            return true
+        } else {
+            return false
+        }
+    }
+
+});
 
 
 
