@@ -10,8 +10,9 @@ function initBasket() {
 
 function addBasket(product) {
     let basket = initBasket();
-    let productFind = basket.find(basketProduct => basketProduct.idItem == product.idItem);
-
+    let productFind = basket.find(function(basketProduct) {
+        return basketProduct.idItem === product.idItem;
+    });
     if (productFind != undefined) {
         productFind.quantity = parseInt(productFind.quantity) + parseInt(product.quantity);
     } else {
@@ -23,12 +24,16 @@ function addBasket(product) {
 //function pour vider la ligne du panier ou seulement la quantite si le produit est existant dans le panier
 function removeBasket(product) {
     let basket = initBasket();
-    let productFind = basket.find(basketProduct => basketProduct.idItem == product.idItem);
+    let productFind = basket.find(function(basketProduct) {
+        return basketProduct.idItem === product.idItem;
+    });
 
     if (productFind.quantity > 1) {
         productFind.quantity--;
     } else {
-        basket = basket.filter(basketProduct => basketProduct.idItem != product.idItem);
+        basket = basket.filter(function(basketProduct) {
+           return basketProduct.idItem != product.idItem
+        });
     }
     localStorage.setItem("basket", JSON.stringify(basket));
 }

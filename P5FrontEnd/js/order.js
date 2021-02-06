@@ -95,7 +95,7 @@ resetBasketAll.addEventListener('click', function() {
     if(basket == null) {
         alert("votre panier ne contient pas d'article");
     } else {
-        if(confirm("attention, vous êtes sur le point de vider totalement votre panier!")) {        
+        if(confirm("Attention, vous êtes sur le point de vider totalement votre panier!")) {        
             cartTableBody.remove()
             localStorage.clear(basket); 
             window.location.reload(); 
