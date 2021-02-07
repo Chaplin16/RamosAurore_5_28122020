@@ -1,4 +1,2 @@
-# ignore JWDP5 folder
 JWDP5/
-# ignore bootstrap folder
-bootstrap/
+P5FrontEnd/node_modules/

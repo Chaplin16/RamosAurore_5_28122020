@@ -5,11 +5,9 @@ let containerProduct = document.getElementById('listProduct');
 
 //variable de l url de api avec choix du produit dans config.api
 
-//var myFetch = fetch(config.host + config.api)
-var myFetch = fetch("https://auroremyfirstonlinesite.herokuapp.com/api/teddies")
-
-// fonction generique (affichage de tous les produits))
-function showProduct(product) { 
+//var myFetch = fetch("https://auroremyfirstonlinesite.herokuapp.com/api/teddies")
+var myFetch = fetch(config.host + config.api);
+function showProduct(product) { // affichage des produits
 // je recupere l url où j y rajoute l id de la peluche cliquée
     let url = "productDetail.html?id=" + product.id
     // je rajoute le HTML dans le js avec les variables de toutes les propriétés
@@ -39,10 +37,10 @@ function showProduct(product) {
 
 // requete vers l api
 myFetch.then(function (response) {
-//premiere promesse avec la reponse json
+    //premiere promesse avec la reponse json
     return response.json()
-    })
-//promesse de la reponse json a qui je demande la liste des produits
+})
+    //promesse de la reponse json a qui je demande la liste des produits
     .then(function(listProductData) {
 
 //j utilise la boucle for of pour recuperer un produit de la liste

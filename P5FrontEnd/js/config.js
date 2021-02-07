@@ -1,12 +1,12 @@
 let config = {
-    host:"http://localhost:3000/api/",
+    host: location.hostname === "aurore-frontend.herokuapp.com"
+        ? "https://auroremyfirstonlinesite.herokuapp.com/api/"
+        : "http://localhost:3000/api/",
+    // host: "https://auroremyfirstonlinesite.herokuapp.com/api/",
     api: "teddies"
-}
+};
+
+//(config.host + config.api)
 //teddies
 //furniture
 //cameras
-
-
-let apiUrl = ((config.host + config.api) === "localhost" || (config.host + config.api) === "127.0.0.1" )
-? (config.host + config.api)
-: "https://auroremyfirstonlinesite.herokuapp.com/"
