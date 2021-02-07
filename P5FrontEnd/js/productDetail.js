@@ -73,11 +73,10 @@ function displayCardTeddy(product) {
                         </section>`;
                     }
                     
-
-       
-
 //j envoi une requete avec l'url precis(id) du nounours
-fetch("http://localhost:3000/api/teddies/" + id)
+
+//fetch("http://localhost:3000/api/teddies/" + id)
+fetch("https://auroremyfirstonlinesite.herokuapp.com/api/teddies/" + id)
     //premiere promesse avec la reponse json
     .then(function (response) {
         return response.json()

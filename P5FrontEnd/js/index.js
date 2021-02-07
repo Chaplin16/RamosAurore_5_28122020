@@ -4,7 +4,9 @@
 let containerProduct = document.getElementById('listProduct'); 
 
 //variable de l url de api avec choix du produit dans config.api
-var myFetch = fetch(config.host + config.api)
+
+//var myFetch = fetch(config.host + config.api)
+var myFetch = fetch("https://auroremyfirstonlinesite.herokuapp.com/api/teddies")
 
 // fonction generique (affichage de tous les produits))
 function showProduct(product) { 
