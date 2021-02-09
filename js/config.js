@@ -1,6 +1,6 @@
 let config = {
-  //host: "https://auroremyfirstonlinesite.herokuapp.com/api/",
-   host: "http://localhost:3000/api/",
+//  host: "https://auroremyfirstonlinesite.herokuapp.com/api/",
+    host: "http://localhost:3000/api/",
     api: "teddies"
 };
 

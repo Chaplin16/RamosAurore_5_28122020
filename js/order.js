@@ -49,7 +49,8 @@ for (let btn of trash) {
     })
 };
 
-function orderLines() { //j affiche chaque ligne de commande 
+function orderLines() //j affiche chaque ligne de commande 
+{ 
     basket.forEach((product) => {
         calculPrice(product); 
         totalQuantity += parseInt(product.quantity);
@@ -69,7 +70,7 @@ function orderLines() { //j affiche chaque ligne de commande
     localStorage.setItem("totalQuantity", totalQuantity);//nombre d 'articles du panier affiché dans les headers
     localStorage.setItem("totalOrder", totalOrder);
     calculQuantity();
- };
+ }
 
 let resetBasketAll = document.getElementById("resetBasketAll");
 resetBasketAll.addEventListener('click', function() {
@@ -85,7 +86,8 @@ resetBasketAll.addEventListener('click', function() {
             return false
         }
     }
-});
+})
+
 
 
 

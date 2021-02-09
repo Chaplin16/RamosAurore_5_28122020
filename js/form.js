@@ -1,29 +1,27 @@
-
 let btnSubmit = document.getElementById("btnSubmit");
 
-//je cree une fonction pour envoyer un tableau à l 'API
-let products = [];
-function orderForAPI (item) {
+let products = []; // je cree une fonction pour envoyer un tableau à l 'API
+function orderForAPI (item)
+{
     for(let i = 0; i < item.length; i++){
     products.push(item[i].idItem);
     }  
 }
 
-//envoie du formulaire au click du bouton
-btnSubmit.addEventListener("click", function (event) {
+btnSubmit.addEventListener("click", function (event) { // envoie du formulaire au click du bouton
     let form = document.getElementById("form");
     event.preventDefault();
 //verification du panier s'il contient articles ET si le formulaire est correctement rempli
     if(basketIsRight() == true  && form.reportValidity() == true) {
         let contact = { // je cree un objet avec les valeurs que je recupere par les id
-                'firstName': document.getElementById("userName").value,
-                'lastName': document.getElementById("userLastName").value,
-                'address': document.getElementById("userAdress").value,
-                'email': document.getElementById("userEmail").value,
-                'city': document.getElementById("userCity").value    
+            'firstName': document.getElementById("userName").value,
+            'lastName': document.getElementById("userLastName").value,
+            'address': document.getElementById("userAdress").value,
+            'email': document.getElementById("userEmail").value,
+            'city': document.getElementById("userCity").value    
         }     
         orderForAPI(basket); //je rappelle la function pour creer un tableau des produits commandés
-        let sendInfo = JSON.stringify({ //je fais une chaine de caractere
+        let sendInfo = JSON.stringify({ 
             contact,
             products, 
         });
