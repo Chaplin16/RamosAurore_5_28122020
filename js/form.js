@@ -1,34 +1,29 @@
-//je recupere l'emplacement du bouton
+
 let btnSubmit = document.getElementById("btnSubmit");
 
-//je cree unfonction pour envoyer un tableau a l 'API
+//je cree une fonction pour envoyer un tableau à l 'API
 let products = [];
 function orderForAPI (item) {
     for(let i = 0; i < item.length; i++){
     products.push(item[i].idItem);
     }  
 }
- 
-//je cree le onclick sur le bouton
+
+//envoie du formulaire au click du bouton
 btnSubmit.addEventListener("click", function (event) {
     let form = document.getElementById("form");
     event.preventDefault();
-//verification du panier 
+//verification du panier s'il contient articles ET si le formulaire est correctement rempli
     if(basketIsRight() == true  && form.reportValidity() == true) {
-// je cree un objet avec les valeurs que je recupere par les id
-        let contact = {
+        let contact = { // je cree un objet avec les valeurs que je recupere par les id
                 'firstName': document.getElementById("userName").value,
                 'lastName': document.getElementById("userLastName").value,
                 'address': document.getElementById("userAdress").value,
                 'email': document.getElementById("userEmail").value,
                 'city': document.getElementById("userCity").value    
         }     
-
-//je rappelle la function pour creer un tableau des produits commandés
-        orderForAPI(basket);
-
-//je fais une chaine de caractere
-        let sendInfo = JSON.stringify({
+        orderForAPI(basket); //je rappelle la function pour creer un tableau des produits commandés
+        let sendInfo = JSON.stringify({ //je fais une chaine de caractere
             contact,
             products, 
         });
@@ -43,8 +38,7 @@ btnSubmit.addEventListener("click", function (event) {
             .then(function (response) {
                 return response.json()
             })  
-            .then(function(data) {
-//j enregistre le retour  de l'api dans des variables
+            .then(function(data) { //j enregistre le retour  de l'api dans des variables
                 let user = data.contact.lastName;
                 let orderId = data.orderId;
 //ouverture de la page de confirmation ave les parametres dans l url
@@ -54,7 +48,7 @@ btnSubmit.addEventListener("click", function (event) {
             .catch(function(err) {
             console.log('Retour info Api problem: ' + err.message);
             })
-        }
+    }
 
 });
 

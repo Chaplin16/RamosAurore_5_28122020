@@ -27,14 +27,13 @@ function removeBasket(product) {
     let productFind = basket.find(function(basketProduct) {
         return basketProduct.idItem === product.idItem;
     });
-
-    if (productFind.quantity > 1) {
-        productFind.quantity--;
-    } else {
-        basket = basket.filter(function(basketProduct) {
-           return basketProduct.idItem != product.idItem
-        });
-    }
+        if (productFind.quantity > 1) {
+            productFind.quantity--;
+        } else {
+            basket = basket.filter(function(basketProduct) {
+            return basketProduct.idItem != product.idItem
+            });
+        }
     localStorage.setItem("basket", JSON.stringify(basket));
 }
 
