@@ -1,4 +1,4 @@
-//FONCTIONS UTILISEES POUR LE LOCAL STORAGE
+//function pour verifier le panier
 function initBasket()
 {
     let basket = localStorage.getItem('basket');
@@ -9,6 +9,7 @@ function initBasket()
     }
 }
 
+///function pour ajouter une ligne au panier ou juste la quantité
 function addBasket(product)
 {
     let basket = initBasket();
@@ -46,8 +47,8 @@ function basketIsRight()
     if(basket.length <= 0 || basket == null) {
         alert("Il n'y a pas d'article dans votre panier!");
         return false
-    }else {
-        return true
     }
+        return true
+    
 }
 

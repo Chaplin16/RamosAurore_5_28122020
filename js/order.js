@@ -82,10 +82,10 @@ resetBasketAll.addEventListener('click', function() {
             localStorage.clear(basket); 
             window.location.reload(); 
             return true
-        } else {
+        } 
             return false
         }
-    }
+    
 })
 
 
