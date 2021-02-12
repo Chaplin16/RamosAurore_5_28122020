@@ -27,12 +27,12 @@ btnSubmit.addEventListener("click", function (event) { // envoie du formulaire a
         });
 
 //j'envoie des donnees au serveur    
-        fetch("http://localhost:3000/api/teddies/order", {
+        fetch(config.host + config.api + '/' + order), {
             method: "post",
             headers: {"Content-Type": "application/json;charset=UTF-8"},
             mode:"cors",
             body: sendInfo            
-        })   
+        }  
             .then(function (response) {
                 return response.json()
             })  
