@@ -32,7 +32,7 @@ productListFetch
     .then(function(response) {
         return response.json();
     }) 
-    .then(function(listProductData) { // promesse de la reponse json a qui je demande la liste des produits
+    .then(function(listProductData) { // promesse de la reponse json ( liste des produits)
         for (let product of listProductData) { // boucle for of pour recuperer un produit de la liste
             let teddy = new TeddyBears(product); // creation de teddy sur le modele du constructor TeddyBear
             showProduct(teddy); // j appelle ma fonction  en lui passant en parametre teddy          
